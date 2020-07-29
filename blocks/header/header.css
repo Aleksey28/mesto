@@ -1,0 +1,4 @@
+.header {
+  width: calc(100% - 199px * 2);
+  min-width: 300px;
+}
