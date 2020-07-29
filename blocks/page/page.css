@@ -1,4 +1,15 @@
 .page {
-  max-width: 1280px;
   min-width: 300px;
+  max-width: 1280px;
+  margin: auto;
+  padding: 45px 0 60px;
+
+  background-color: black;
+}
+
+@media screen and (max-width: 1280px) {
+  .page {
+    padding-top: cacl((100vw - 300px) / (1280 - 300) * (45 - 28) + 28px);
+    padding-bottom: cacl((100vw - 300px) / (1280 - 300) * (60 - 36) + 36px);
+  }
 }
