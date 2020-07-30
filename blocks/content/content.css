@@ -1,25 +1,22 @@
-@import url(./__logo/header__logo.css);
-@import url(./__line/header__line.css);
-
-.header {
+.content {
   display: flex;
-  align-content: space-between;
+  align-items: center;
+  flex-direction: column;
 
   width: calc(100% - 199px * 2);
   min-width: calc(1024px - 100px * 2);
-
-  border-bottom: 1px solid rgba(84, 84, 84, .7);
+  padding: 40px 0 66px;
 }
 
 @media screen and (max-width: 1024px) {
-  .header {
+  .content {
     width: calc(100% - 100px * 2);
     min-width: calc(768px - 19px * 2);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .header {
+  .content {
     width: calc(100% - 19px * 2);
     min-width: 300px;
   }
