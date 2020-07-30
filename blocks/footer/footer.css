@@ -1,22 +1,19 @@
-.content {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+@import url(./__copyright/footer__copyright.css);
 
+.footer {
   width: calc(100% - 199px * 2);
   min-width: calc(1024px - 100px * 2);
-  padding: 40px 0 66px;
 }
 
 @media screen and (max-width: 1024px) {
-  .content {
+  .footer {
     width: calc(100% - 100px * 2);
     min-width: calc(768px - 19px * 2);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .content {
-    min-width: calc(300px - 19px * 2);
+  .footer {
+    min-width: calc(100% - 19px * 2);
   }
 }

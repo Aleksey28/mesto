@@ -1,4 +1,6 @@
 .element__btm-like {
+  cursor: pointer;
+
   color: #000000;
 
   font-family: Inter;

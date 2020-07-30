@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 600px) {
   .profile__btm_action_add {
-    width: calc(100% - 19px * 2);
+    width: 100%;
 
     background-size: 16px 16px;
   }
