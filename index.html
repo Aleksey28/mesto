@@ -16,10 +16,10 @@
     <section class="profile">
       <img src="./images/profile-avatar.jpg" alt="Аватар" class="profile__avatar">
       <div class="profile__info">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button class="profile__btn profile__btn_action_edit"></button>
         <div class="flex-break"></div>
-        <p class="profile__subtitle">Исследователь океана</p>
+        <p class="profile__profession">Исследователь океана</p>
       </div>
       <button class="profile__btn profile__btn_action_add"></button>
     </section>
@@ -71,14 +71,15 @@
     <p class="footer__copyright">@ 2020 Попов Алексей</p>
   </footer>
 
-  <div class="popap">
-    <form class="popap__container">
-      <button class="popap__btn popap__btn_action_close"></button>
-      <h2 class="popap__title">Редактировать профиль</h2>
-      <input type="text" class="popap__input popap__input_type_profile-title" placeholder="Заголовок профиля">
-      <input type="text" class="popap__input popap__input_type_profile-subtitle" placeholder="Описание профиля">
-      <button class="popap__btn popap__btn_action_save">Сохранить</button>
+  <div class="popup">
+    <form class="popup__container">
+      <button class="popup__btn popup__btn_action_close" type="button"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <input type="text" class="popup__input popup__input_type_name" placeholder="Заголовок профиля">
+      <input type="text" class="popup__input popup__input_type_profession" placeholder="Описание профиля">
+      <button class="popup__btn popup__btn_action_save" type="submit">Сохранить</button>
     </form>
   </div>
+  <script src="./blocks/popup/popup.js"></script>
 </body>
 </html>
