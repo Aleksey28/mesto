@@ -1,13 +1,14 @@
-.profile__btm{
+.profile__btn{
   box-sizing: border-box;
 
   cursor: pointer;
   transition: opacity .2s ease-in;
 
+  background-color: black;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.profile__btm:hover {
+.profile__btn:hover {
   opacity: .6;
 }

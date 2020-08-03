@@ -3,6 +3,13 @@
 .footer {
   width: calc(100% - 199px * 2);
   min-width: calc(1024px - 100px * 2);
+  padding: 0 0 60px;
+}
+
+@media screen and (max-width: 1280px) {
+  .footer {
+    padding-bottom: calc((100vw - 300px) / (1280 - 300) * (60 - 36) + 36px);
+  }
 }
 
 @media screen and (max-width: 1024px) {

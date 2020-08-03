@@ -17,58 +17,68 @@
       <img src="./images/profile-avatar.jpg" alt="Аватар" class="profile__avatar">
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <bottom class="profile__btm profile__btm_action_edit"></bottom>
+        <button class="profile__btn profile__btn_action_edit"></button>
         <div class="flex-break"></div>
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
-      <buttom class="profile__btm profile__btm_action_add"></buttom>
+      <button class="profile__btn profile__btn_action_add"></button>
     </section>
     <section class="elements">
       <div class="element">
         <div class="element__image element__image_type_karachay-cherkessia"></div>
         <div class="element__footer">
           <h3 class="element__caption">Карачаевск</h3>
-          <buttom class="element__btm-like">&#9825;</buttom>
+          <button class="element__btn-like">&#9825;</button>
         </div>
       </div>
       <div class="element">
         <div class="element__image element__image_type_elbrus"></div>
         <div class="element__footer">
           <h3 class="element__caption">Гора Эльбрус</h3>
-          <buttom class="element__btm-like">&#9825;</buttom>
+          <button class="element__btn-like">&#9825;</button>
         </div>
       </div>
       <div class="element">
         <div class="element__image element__image_type_dombai"></div>
         <div class="element__footer">
           <h3 class="element__caption">Домбай</h3>
-          <buttom class="element__btm-like">&#9825;</buttom>
+          <button class="element__btn-like">&#9825;</button>
         </div>
       </div>
       <div class="element">
         <div class="element__image element__image_type_elbrus"></div>
         <div class="element__footer">
           <h3 class="element__caption">Гора Эльбрус</h3>
-          <buttom class="element__btm-like">&#9825;</buttom>
+          <button class="element__btn-like">&#9825;</button>
         </div>
       </div>
       <div class="element">
         <div class="element__image element__image_type_dombai"></div>
         <div class="element__footer">
           <h3 class="element__caption">Домбай</h3>
-          <buttom class="element__btm-like">&#9825;</buttom>
+          <button class="element__btn-like">&#9825;</button>
         </div>
       </div>
       <div class="element">
         <div class="element__image element__image_type_karachay-cherkessia"></div>
         <div class="element__footer">
           <h3 class="element__caption">Карачаево-Черкесия</h3>
-          <buttom class="element__btm-like">&#9825;</buttom>
+          <button class="element__btn-like">&#9825;</button>
         </div>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">@ 2020 Попов Алексей</p>
   </footer>
+
+  <div class="popap">
+    <form class="popap__container">
+      <button class="popap__btn popap__btn_action_close"></button>
+      <h2 class="popap__title">Редактировать профиль</h2>
+      <input type="text" class="popap__input popap__input_type_profile-title" placeholder="Заголовок профиля">
+      <input type="text" class="popap__input popap__input_type_profile-subtitle" placeholder="Описание профиля">
+      <button class="popap__btn popap__btn_action_save">Сохранить</button>
+    </form>
+  </div>
 </body>
 </html>

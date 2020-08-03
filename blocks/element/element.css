@@ -4,13 +4,16 @@
 @import url(./__image/_type/element__image_type_karachay-cherkessia.css);
 @import url(./__footer/element__footer.css);
 @import url(./__caption/element__caption.css);
-@import url(./__btm-like/element__btm-like.css);
+@import url(./__btn-like/element__btn-like.css);
 
 .element {
   display: flex;
-  overflow: hidden;
-  flex-direction: column;
 
-  border-radius: 10px;
-  background: #FFFFFF;
-}
+overflow: hidden;
+
+flex-direction: column;
+
+border-radius: 10px;
+
+background: #FFFFFF;
+  }

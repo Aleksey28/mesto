@@ -1,0 +1,24 @@
+@import url(./__container/popap__container.css);
+@import url(./__title/popap__title.css);
+@import url(./__input/popap__input.css);
+@import url(./__input/_type/popap__input_type_profile-title.css);
+@import url(./__input/_type/popap__input_type_profile-subtitle.css);
+@import url(./__btn/popap__btn.css);
+@import url(./__btn/_action/popap__btn_action_close.css);
+@import url(./__btn/_action/popap__btn_action_save.css);
+
+.popap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: none;
+
+  width: 100%;
+  min-width: 300px;
+  height: 100%;
+
+  background-color: rgb(0, 0, 0, 0.5);
+}

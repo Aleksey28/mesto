@@ -1,11 +1,11 @@
-.element__btm-like {
-  cursor: pointer;
+.popap__title {
+  margin: 0 0 54px;
 
   color: #000000;
 
   font-family: Inter;
   font-size: 24px;
-  font-weight: normal;
+  font-weight: 900;
   font-style: normal;
   line-height: 29px;
 }
