@@ -17,66 +17,66 @@
       <img src="./images/profile-avatar.jpg" alt="Аватар" class="profile__avatar">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button class="profile__btn profile__btn_action_edit"></button>
-        <div class="flex-break"></div>
+        <button class="profile__btn profile__btn_action_edit" type="button"></button>
         <p class="profile__profession">Исследователь океана</p>
       </div>
-      <button class="profile__btn profile__btn_action_add"></button>
+      <button class="profile__btn profile__btn_action_add" type="button"></button>
     </section>
-    <section class="elements">
-      <div class="element">
-        <div class="element__image element__image_type_mystery-shack"></div>
+    <ul class="elements">
+      <li class="element">
+        <img src="./images/element-mystery-shack.jpg" class="element__image element__image_type_mystery-shack">
         <div class="element__footer">
           <h3 class="element__caption">Хижина чудес</h3>
-          <button class="element__btn-like">&#9825;</button>
+          <button class="element__btn-like" type="button">&#9825;</button>
         </div>
-      </div>
-      <div class="element">
-        <div class="element__image element__image_type_canyon"></div>
+      </li>
+      <li class="element">
+        <img src="./images/element-canyon.jpg" class="element__image element__image_type_canyon">
         <div class="element__footer">
           <h3 class="element__caption">Каньон</h3>
-          <button class="element__btn-like">&#9825;</button>
+          <button class="element__btn-like" type="button">&#9825;</button>
         </div>
-      </div>
-      <div class="element">
-        <div class="element__image element__image_type_northwest-manor"></div>
+      </li>
+      <li class="element">
+        <img src="./images/element-northwest-manor.jpg" class="element__image element__image_type_northwest-manor">
         <div class="element__footer">
           <h3 class="element__caption">Поместе Нортвест</h3>
-          <button class="element__btn-like">&#9825;</button>
+          <button class="element__btn-like" type="button">&#9825;</button>
         </div>
-      </div>
-      <div class="element">
-        <div class="element__image element__image_type_from-dusk-to-dawn"></div>
+      </li>
+      <li class="element">
+        <img src="./images/element-from-dusk-to-dawn.jpg" class="element__image element__image_type_from-dusk-to-dawn">
         <div class="element__footer">
           <h3 class="element__caption">От заката до рассвета</h3>
-          <button class="element__btn-like">&#9825;</button>
+          <button class="element__btn-like" type="button">&#9825;</button>
         </div>
       </div>
-      <div class="element">
-        <div class="element__image element__image_type_island-was-asked"></div>
+      <li class="element">
+        <img src="./images/element-island-was-asked.jpg" class="element__image element__image_type_island-was-asked">
         <div class="element__footer">
           <h3 class="element__caption">Остров Задавалы</h3>
-          <button class="element__btn-like">&#9825;</button>
+          <button class="element__btn-like" type="button">&#9825;</button>
         </div>
-      </div>
-      <div class="element">
-        <div class="element__image element__image_type_future-city"></div>
+      </li>
+      <li class="element">
+        <img src="./images/element-future-city.jpg" class="element__image element__image_type_future-city">
         <div class="element__footer">
           <h3 class="element__caption">Город будущего</h3>
-          <button class="element__btn-like">&#9825;</button>
+          <button class="element__btn-like" type="button">&#9825;</button>
         </div>
-    </section>
+      </li>
+    </ul>
   </main>
   <footer class="footer">
     <p class="footer__copyright">@ 2020 Попов Алексей</p>
   </footer>
 
   <div class="popup">
-    <form class="popup__container">
+    <form class="popup__container" name="container">
       <button class="popup__btn popup__btn_action_close" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" class="popup__input popup__input_type_name" placeholder="Заголовок профиля">
-      <input type="text" class="popup__input popup__input_type_profession" placeholder="Описание профиля">
+      <input type="text" class="popup__input popup__input_type_name" name="name" placeholder="Заголовок профиля">
+      <input type="text" class="popup__input popup__input_type_profession" name="profession" placeholder="Описание профиля">
       <button class="popup__btn popup__btn_action_save" type="submit">Сохранить</button>
     </form>
   </div>
