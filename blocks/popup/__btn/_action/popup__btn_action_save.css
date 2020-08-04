@@ -1,27 +1,20 @@
 .popup__btn_action_save {
   height: 50.15px;
 
-transition: background-color .2s ease-in;
+  -webkit-transition: background-color .2s ease-in;
+  -o-transition: background-color .2s ease-in;
+  transition: background-color .2s ease-in;
+  text-align: center;
 
-text-align: center;
+  color: #FFFFFF;
+  border-radius: 2px;
+  background-color: #000000;
 
-color: #FFFFFF;
-
-border-radius: 2px;
-
-background-color: #000000;
-
-font-family: Inter;
-
-font-size: 18px;
-
-font-weight: normal;
-
-font-style: normal;
-
-line-height: 22px;
-
-  }
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 22px;
+}
 
 .popup__btn_action_save:hover {
   background-color: rgba(0, 0, 0, 0.8);

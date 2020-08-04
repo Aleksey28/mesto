@@ -1,31 +1,21 @@
 .popup__input {
-  margin-bottom: 30px;
+  margin-bottom: 23px;
 
-color: #000000;
+  color: #000000;
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.2);
 
-border: none;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 17px;
 
-border-bottom: 1px solid rgb(0, 0, 0, 0.2);
-
-font-family: Inter;
-
-font-size: 14px;
-
-font-weight: normal;
-
-font-style: normal;
-
-line-height: 17px;
-
-  }
+}
 
 .popup__input::placeholder               {
   color: rgba(0, 0, 0, 0.8);
 
-font-family: Inter;
+  font-size: 14px;
+  line-height: 17px;
 
-font-size: 14px;
-
-line-height: 17px;
-
-  }
+}

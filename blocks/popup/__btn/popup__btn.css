@@ -1,8 +1,8 @@
 .popup__btn {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 
-cursor: pointer;
+  cursor: pointer;
 
-border: 0;
-
-  }
+  border: 0;
+}

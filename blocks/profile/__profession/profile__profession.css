@@ -13,6 +13,8 @@
   font-style: normal;
   line-height: 22px;
 
+  -o-text-overflow: ellipsis;
+
 }
 
 @media screen and (max-width: 1280px) {

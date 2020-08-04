@@ -1,28 +1,24 @@
 .popup__btn_action_close {
   position: absolute;
+  top: -39px;
+  right: -38px;
 
-top: -55px;
+  width: 42px;
+  height: 42px;
 
-right: -55px;
+  -webkit-transition: opacity .2s ease-in;
+  -o-transition: opacity .2s ease-in;
+  transition: opacity .2s ease-in;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 
-width: 58px;
-
-height: 58px;
-
-transition: opacity .2s ease-in;
-
-transform: rotate(45deg);
-
-border: none;
-
-border-image-width: 0;
-
-background-color: rgba(0, 0, 0, 0);
-
-background-image: url(../../../../images/profile-add-btn.svg);
-
-background-size: cover;
-  }
+  border: none;
+  border-image-width: 0;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(../../../../images/profile-add-btn.svg);
+  background-size: cover;
+}
 
 .popup__btn_action_close:hover {
   opacity: .6;
@@ -30,7 +26,7 @@ background-size: cover;
 
 @media screen and (max-width: 600px) {
   .popup__btn_action_close{
-    right: calc((100vw - 300px) / (600 - 300) * (-55 - 7) - 7px);
+    right: calc((100vw - 300px) / (600 - 300) * (-38 - 7) - 7px);
   }
 }
 
