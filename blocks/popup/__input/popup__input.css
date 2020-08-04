@@ -9,13 +9,15 @@
   font-weight: normal;
   font-style: normal;
   line-height: 17px;
-
 }
 
-.popup__input::placeholder               {
+.popup__input:last-child {
+  margin-bottom: 52px;
+}
+
+.popup__input::placeholder {
   color: rgba(0, 0, 0, 0.8);
 
   font-size: 14px;
   line-height: 17px;
-
 }
