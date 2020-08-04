@@ -2,6 +2,9 @@
   padding: 2px 4px;
 
   cursor: pointer;
+  -webkit-transition: opacity .2s ease-in;
+  -o-transition: opacity .2s ease-in;
+  transition: opacity .2s ease-in;
 
   color: #000000;
   border: none;
@@ -12,4 +15,8 @@
   font-weight: normal;
   font-style: normal;
   line-height: 29px;
+}
+
+.element__btn-like:hover {
+  opacity: .6;
 }
