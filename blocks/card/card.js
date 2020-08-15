@@ -32,7 +32,6 @@ const initialCards = [
 ];
 
 const cards = content.querySelector('.cards');
-const addButton = content.querySelector('.profile__btn_action_add');
 
 const deleteCard = (evt) => {
   evt.target.parentElement.remove();
