@@ -3,6 +3,8 @@ const editButton = content.querySelector('.profile__btn_action_edit');
 const popup = document.querySelector('.popup');
 const popupBtnClose = popup.querySelector('.popup__btn_action_close');
 
+const elementCaption = content.querySelector('.element__caption');
+
 const popupInputName = popup.querySelector('.popup__input_type_name');
 const popupInputProfession = popup.querySelector('.popup__input_type_profession');
 const profileName = content.querySelector('.profile__name');
