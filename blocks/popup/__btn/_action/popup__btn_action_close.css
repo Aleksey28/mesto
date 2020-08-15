@@ -26,12 +26,18 @@
 
 @media screen and (max-width: 600px) {
   .popup__btn_action_close{
-    right: calc((100vw - 300px) / (600 - 300) * (-38 - 7) - 7px);
+    top: calc((100vw - 300px) / (600 - 320) * (-38 - 26) - 26px);
+    right: calc((100vw - 300px) / (600 - 320) * (-38 - 26) - 26px);
+
+    width: calc((100vw - 320px) / (600 - 320) * (42 - 30) + 30px);
+    height: calc((100vw - 320px) / (600 - 320) * (42 - 30) + 30px);
   }
 }
 
+
 @media screen and (max-width: 300px) {
   .popup__btn_action_close{
-    right: -7px;
+    top: -26px;
+    right: -26px;
   }
 }

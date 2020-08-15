@@ -8,3 +8,10 @@
   font-style: normal;
   line-height: 29px;
 }
+
+@media screen and (max-width: 600px) {
+  .popup__title{
+    font-size: calc((100vw - 320px) / (600 - 320) * (24 - 18) + 18px);
+    line-height: calc((100vw - 320px) / (600 - 320) * (29 - 22) + 22px);
+  }
+}

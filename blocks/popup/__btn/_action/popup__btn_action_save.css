@@ -19,3 +19,12 @@
 .popup__btn_action_save:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+@media screen and (max-width: 600px) {
+  .popup__btn_action_save{
+    height: calc((100vw - 320px) / (600 - 320) * (50.15 - 40) + 40px);
+
+    font-size: calc((100vw - 320px) / (600 - 320) * (14 - 12) + 12px);
+    line-height: calc((100vw - 320px) / (600 - 320) * (17 - 15) + 15px);
+  }
+}
