@@ -3,6 +3,7 @@
 @import url(./__input/popup__input.css);
 @import url(./__input/_type/popup__input_type_name.css);
 @import url(./__input/_type/popup__input_type_profession.css);
+@import url(./__input/_type/popup__input_type_link.css);
 @import url(./__btn/popup__btn.css);
 @import url(./__btn/_action/popup__btn_action_close.css);
 @import url(./__btn/_action/popup__btn_action_submit.css);
@@ -37,4 +38,5 @@ transition: all 0.5s ease;
 opacity: 0;
 
 background-color: rgb(0, 0, 0, 0.5);
-  }
+
+}
