@@ -1,4 +1,4 @@
-.element__caption {
+.card__caption {
   overflow: hidden;
 
   white-space: nowrap;
@@ -15,7 +15,7 @@
 }
 
 @media screen and (max-width: 425px) {
-  .element__caption {
+  .card__caption {
     line-height: 31px;
   }
 }

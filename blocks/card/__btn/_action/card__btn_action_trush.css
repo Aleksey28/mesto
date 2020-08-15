@@ -1,4 +1,4 @@
-.element__btn_action_trush {
+.card__btn_action_trush {
   position: absolute;
 
   align-self: flex-end;
@@ -9,6 +9,6 @@
   transform: translate(-15px, 18px);
 
   background-color: rgba(0, 0, 0, 0);
-  background-image: url(../../../../images/element-trash.svg);
+  background-image: url(../../../../images/card-trash.svg);
   background-size: cover;
 }
