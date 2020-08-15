@@ -33,17 +33,26 @@ const initialCards = [
 
 const cards = content.querySelector('.cards');
 
+const deleteCard = (evt) => {
+  evt.target.parentElement.remove();
+}
+
 const addCards = (cardData) => {
   const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.cloneNode(true);
   const cardElementImage = cardElement.querySelector('.card__image');
   const cardElementCaption = cardElement.querySelector('.card__caption');
+  const cardElementBtnTrush = cardElement.querySelector('.card__btn_action_trush');
 
   cardElementImage.src = cardData.link;
   cardElementImage.alt = cardData.description;
   cardElementCaption.textContent = cardData.name;
 
   cards.append(cardElement);
+
+  cardElementBtnTrush.addEventListener('click', deleteCard);
 }
+
+
 
 initialCards.forEach(addCards);
