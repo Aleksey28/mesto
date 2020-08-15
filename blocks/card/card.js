@@ -32,9 +32,18 @@ const initialCards = [
 ];
 
 const cards = content.querySelector('.cards');
+const addButton = content.querySelector('.profile__btn_action_add');
 
 const deleteCard = (evt) => {
   evt.target.parentElement.remove();
+}
+
+const likeCard = (evt) => {
+  if (evt.target.textContent === String.fromCodePoint(9825)) {
+    evt.target.textContent = String.fromCodePoint(10084);
+  } else {
+    evt.target.textContent = String.fromCodePoint(9825);
+  }
 }
 
 const addCards = (cardData) => {
@@ -43,6 +52,7 @@ const addCards = (cardData) => {
   const cardElementImage = cardElement.querySelector('.card__image');
   const cardElementCaption = cardElement.querySelector('.card__caption');
   const cardElementBtnTrush = cardElement.querySelector('.card__btn_action_trush');
+  const cardElementBtnLike = cardElement.querySelector('.card__btn_action_like');
 
   cardElementImage.src = cardData.link;
   cardElementImage.alt = cardData.description;
@@ -51,8 +61,7 @@ const addCards = (cardData) => {
   cards.append(cardElement);
 
   cardElementBtnTrush.addEventListener('click', deleteCard);
+  cardElementBtnLike.addEventListener('click', likeCard);
 }
-
-
 
 initialCards.forEach(addCards);
