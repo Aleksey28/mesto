@@ -1,7 +1,9 @@
 @import url(./__image/element__image.css);
 @import url(./__footer/element__footer.css);
 @import url(./__caption/element__caption.css);
-@import url(./__btn-like/element__btn-like.css);
+@import url(./__btn/element__btn.css);
+@import url(./__btn/_action/element__btn_action_like.css);
+@import url(./__btn/_action/element__btn_action_trush.css);
 
 .element {
   display: -webkit-box;
