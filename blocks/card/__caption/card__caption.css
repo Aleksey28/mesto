@@ -3,6 +3,7 @@
 
   white-space: nowrap;
   text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
 
   color: #000000;
 
@@ -10,8 +11,6 @@
   font-weight: 900;
   font-style: normal;
   line-height: 29px;
-
-  -o-text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 425px) {

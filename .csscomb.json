@@ -4,6 +4,9 @@
       "node_modules/**",
       "bower_components/**"
   ],
+  "block-indent": "  ",
+  "always-semicolon": true,
+  "space-before-closing-brace": "\n",
   "sort-order": [
       [
           "position",
@@ -225,6 +228,7 @@
           "-ms-text-overflow",
           "text-overflow-ellipsis",
           "text-overflow-mode",
+          "-o-text-overflow",
           "-ms-word-wrap",
           "word-wrap",
           "word-break",

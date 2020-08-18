@@ -1,11 +1,14 @@
 .profile__profession {
   overflow: hidden;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 100%;
   flex: 1 0 100%;
 
   margin: 0;
 
   white-space: nowrap;
   text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
 
   color: #FFFFFF;
 
@@ -13,20 +16,11 @@
   font-weight: normal;
   font-style: normal;
   line-height: 22px;
-
-  -o-text-overflow: ellipsis;
-
 }
 
 @media screen and (max-width: 1280px) {
   .profile__profession {
     font-size: calc((100vw - 300px) / (1280 - 300) * (18 - 14) + 14px);
     line-height: calc((100vw - 300px) / (1280 - 300) * (22 - 17) + 17px);
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .profile__profession {
-    flex: none;
   }
 }
