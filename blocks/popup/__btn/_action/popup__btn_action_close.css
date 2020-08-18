@@ -26,8 +26,8 @@
 
 @media screen and (max-width: 600px) {
   .popup__btn_action_close{
-    top: calc((100vw - 300px) / (600 - 320) * (-38 - 26) - 26px);
-    right: calc((100vw - 300px) / (600 - 320) * (-38 - 26) - 26px);
+    top: calc((100vw - 320px) / (600 - 320) * (-39 + 28) - 28px);
+    right: calc((100vw - 320px) / (600 - 320) * (-38 + 28) - 28px);
 
     width: calc((100vw - 320px) / (600 - 320) * (42 - 30) + 30px);
     height: calc((100vw - 320px) / (600 - 320) * (42 - 30) + 30px);
@@ -35,9 +35,9 @@
 }
 
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 320px) {
   .popup__btn_action_close{
-    top: -26px;
-    right: -26px;
+    top: -28px;
+    right: -28px;
   }
 }

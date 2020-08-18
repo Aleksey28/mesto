@@ -57,10 +57,11 @@ const addCards = (cardData) => {
   cardElementImage.alt = cardData.description;
   cardElementCaption.textContent = cardData.name;
 
-  cards.append(cardElement);
+  cards.prepend(cardElement);
 
   cardElementBtnTrush.addEventListener('click', deleteCard);
   cardElementBtnLike.addEventListener('click', likeCard);
+  cardElementImage.addEventListener('click', togglePopup);
 }
 
 initialCards.forEach(addCards);

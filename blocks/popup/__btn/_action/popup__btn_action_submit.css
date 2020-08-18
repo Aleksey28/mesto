@@ -24,7 +24,7 @@
   .popup__btn_action_submit{
     height: calc((100vw - 320px) / (600 - 320) * (50.15 - 40) + 40px);
 
-    font-size: calc((100vw - 320px) / (600 - 320) * (14 - 12) + 12px);
-    line-height: calc((100vw - 320px) / (600 - 320) * (17 - 15) + 15px);
+    font-size: calc((100vw - 320px) / (600 - 320) * (18 - 14) + 14px);
+    line-height: calc((100vw - 320px) / (600 - 320) * (22 - 17) + 17px);
   }
 }

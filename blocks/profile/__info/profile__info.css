@@ -5,13 +5,13 @@
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 
-  max-width: 500px;
+  max-width: 370px;
   margin-left: 30px;
 }
 
 @media screen and (max-width: 1280px) {
   .profile__info {
-    max-width: calc((100vw - 320px) / (1280 - 320) * (500 - 280) + 280px);
+    max-width: calc((100vw - 320px) / (1280 - 320) * (370 - 280) + 280px);
     margin-left: calc((100vw - 320px) / (1280 - 320) * (30 - 5) + 5px);
   }
 }

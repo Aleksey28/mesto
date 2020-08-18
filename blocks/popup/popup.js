@@ -10,34 +10,56 @@ const popupAdd = document.querySelector('.popup_type_add');
 const popupAddInputName = popupAdd.querySelector('.popup__input_type_name');
 const popupAddInputlink = popupAdd.querySelector('.popup__input_type_link');
 
+const popupShow = document.querySelector('.popup_type_show');
+const popupImage = popupShow.querySelector('.popup__image');
+const popupCaption = popupShow.querySelector('.popup__caption');
+
 const profileName = content.querySelector('.profile__name');
 const profileProfession = content.querySelector('.profile__profession');
 
 
 
 
-const togglePopupEdit = (evt) => {
+const togglePopup = (evt) => {
 
-  const popapToToggle = evt.currentTarget === editButton || evt.currentTarget === popupEdit ? popupEdit : popupAdd;
+  let popapToToggle;
+  switch (evt.currentTarget) {
+    case editButton:
+    case popupEdit:
+      popapToToggle = popupEdit;
+      break;
+    case addButton:
+    case popupAdd:
+      popapToToggle = popupAdd;
+      break;
+    default:
+      popapToToggle = popupShow;
+  }
+
+
   const popapToToggleBtnClose = popapToToggle.querySelector('.popup__btn_action_close');
-  // Данное уловие срабатывает, если:
+  // Изначально добавление и удаление класса было реализовано через toggle, но после добавления плавного закрытия и открытия попапа был обнаружен баг. Если быстро нажимать открытия и закрытие, то в момент, когда попап закрывает можно снова нажать на область попап, тогда попап снова будет открываться по верх закрывающегося предыдущего, и currentTarget будет хранить значение самого попап. Нам же не нужна такая ситуация при открытии попап, так как чез currentTarget получаются значения для вывода картинки.
+  // Данное уловия срабатывают, если:
   // - было вызвано событие не из блока попап для открытия блока, на данный момент это относится к кнопке редактирования;
   // - было вызвано событие из блока на нажатие вне контейнера попап, для закрытия блока;
   // - было вызвано события из блока на нажатие кнопки закрытия, соответственно для закрытия блока.
   // Можно подвязать функцию к событиям нажатия только кнопок. Но закрытие попап при нажатии вне контейнера - довольно удобно.
-  if (evt.currentTarget !== popapToToggle ||
-    evt.currentTarget === popapToToggle && (evt.currentTarget === evt.target || evt.target === popapToToggleBtnClose)) {
-      popapToToggle.classList.toggle('popup_opend');
-
-    if (popapToToggle.classList.contains('popup_opend')) {
-      //Делаю switch с залогом на будущее, например для редактирования карточек.
-      switch (popapToToggle) {
-        case popupEdit:
-          popupEditInputName.value = profileName.textContent;
-          popupEditInputProfession.value = profileProfession.textContent;
-      }
+  if (evt.currentTarget !== popapToToggle) {
+    popapToToggle.classList.add('popup_opend');
+    switch (popapToToggle) {
+      case popupEdit:
+        popupEditInputName.value = profileName.textContent;
+        popupEditInputProfession.value = profileProfession.textContent;
+        break;
+      case popupShow:
+        popupImage.src = evt.currentTarget.src;
+        popupImage.alt = evt.currentTarget.alt;
+        popupCaption.textContent = evt.currentTarget.nextElementSibling.children[0].textContent;
     }
+  }else if(evt.currentTarget === popapToToggle && (evt.currentTarget === evt.target || evt.target === popapToToggleBtnClose)) {
+    popapToToggle.classList.remove('popup_opend');
   }
+
 }
 
 const submitPopap = (evt) => {
@@ -59,9 +81,10 @@ const submitPopap = (evt) => {
   evt.currentTarget.classList.remove('popup_opend');
 }
 
-editButton.addEventListener('click', togglePopupEdit);
-addButton.addEventListener('click', togglePopupEdit);
-popupEdit.addEventListener('click', togglePopupEdit);
-popupAdd.addEventListener('click', togglePopupEdit);
+editButton.addEventListener('click', togglePopup);
+addButton.addEventListener('click', togglePopup);
+popupEdit.addEventListener('click', togglePopup);
+popupAdd.addEventListener('click', togglePopup);
+popupShow.addEventListener('click', togglePopup);
 popupEdit.addEventListener('submit', submitPopap);
 popupAdd.addEventListener('submit', submitPopap);

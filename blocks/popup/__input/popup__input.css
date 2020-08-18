@@ -24,7 +24,7 @@
 
 @media screen and (max-width: 600px) {
   .popup__input{
-    margin-bottom: calc((100vw - 320px) / (600 - 320) * (23 - 20) + 20px);
+    margin-bottom: calc((100vw - 320px) / (600 - 320) * (23 - 15) + 15px);
 
     font-size: calc((100vw - 320px) / (600 - 320) * (14 - 12) + 12px);
     line-height: calc((100vw - 320px) / (600 - 320) * (17 - 15) + 15px);
