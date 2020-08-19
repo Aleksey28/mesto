@@ -5,14 +5,17 @@ const addButton = content.querySelector('.profile__btn_action_add');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupEditInputName = popupEdit.querySelector('.popup__input_type_name');
 const popupEditInputProfession = popupEdit.querySelector('.popup__input_type_profession');
+const popupEditBtnClose = popupEdit.querySelector('.popup__btn_action_close');
 
 const popupAdd = document.querySelector('.popup_type_add');
 const popupAddInputName = popupAdd.querySelector('.popup__input_type_name');
 const popupAddInputlink = popupAdd.querySelector('.popup__input_type_link');
+const popupAddBtnClose = popupAdd.querySelector('.popup__btn_action_close');
 
 const popupShow = document.querySelector('.popup_type_show');
 const popupImage = popupShow.querySelector('.popup__image');
 const popupCaption = popupShow.querySelector('.popup__caption');
+const popupShowBtnClose = popupShow.querySelector('.popup__btn_action_close');
 
 const profileName = content.querySelector('.profile__name');
 const profileProfession = content.querySelector('.profile__profession');
@@ -25,15 +28,8 @@ const openPopup = (popupToOpen) => {
   popupToOpen.classList.add('popup_opened');
 }
 
-const closePopup = (evt, popupToClose) => {
-  const popupToCloseBtnClose = popupToClose.querySelector('.popup__btn_action_close');
-  // Данное уловия срабатывают, если:
-  // - было вызвано событие из блока на нажатие вне контейнера попап, для закрытия блока;
-  // - было вызвано события из блока на нажатие кнопки закрытия, соответственно для закрытия блока.
-  // Можно подвязать функцию к событиям нажатия только кнопок. Но закрытие попап при нажатии вне контейнера - довольно удобно.
-  if(evt.currentTarget === popupToClose && (evt.currentTarget === evt.target || evt.target === popupToCloseBtnClose)) {
-    popupToClose.classList.remove('popup_opened');
-  }
+const closePopup = (popupToClose) => {
+  popupToClose.classList.remove('popup_opened');
 }
 
 const deleteCard = (evt) => {
@@ -77,7 +73,7 @@ const submitPopupEdit = (evt) => {
 
   profileName.textContent = popupEditInputName.value;
   profileProfession.textContent = popupEditInputProfession.value;
-  evt.currentTarget.classList.remove('popup_opened');
+  closePopup(popupEdit);
 }
 
 const submitPopupAdd = (evt) => {
@@ -89,7 +85,7 @@ const submitPopupAdd = (evt) => {
     description: popupAddInputName.value
   });
 
-  evt.currentTarget.classList.remove('popup_opened');
+  closePopup(popupAdd);
 }
 
 editButton.addEventListener('click', () => {
@@ -104,16 +100,16 @@ addButton.addEventListener('click', () => {
   popupAddInputlink.value = '';
 });
 
-popupEdit.addEventListener('click', () => {
-  closePopup(event, popupEdit);
+popupEditBtnClose.addEventListener('click', () => {
+  closePopup(popupEdit);
 });
 
-popupAdd.addEventListener('click', () => {
-  closePopup(event, popupAdd);
+popupAddBtnClose.addEventListener('click', () => {
+  closePopup(popupAdd);
 });
 
-popupShow.addEventListener('click', () => {
-  closePopup(event, popupShow);
+popupShowBtnClose.addEventListener('click', () => {
+  closePopup(popupShow);
 });
 
 popupEdit.addEventListener('submit', submitPopupEdit);
