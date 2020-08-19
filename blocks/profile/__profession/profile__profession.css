@@ -24,3 +24,9 @@
     line-height: calc((100vw - 300px) / (1280 - 300) * (22 - 17) + 17px);
   }
 }
+
+@media screen and (max-width: 600px) {
+  .profile__profession {
+    flex: none;
+  }
+}
