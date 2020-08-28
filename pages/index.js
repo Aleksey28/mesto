@@ -92,12 +92,14 @@ editButton.addEventListener('click', () => {
   openPopup(popupEdit);
   popupEditInputName.value = profileName.textContent;
   popupEditInputProfession.value = profileProfession.textContent;
+  enableValidation(settingsForValidation);
 });
 
 addButton.addEventListener('click', () => {
   openPopup(popupAdd);
   popupAddInputName.value = '';
   popupAddInputlink.value = '';
+  enableValidation(settingsForValidation);
 });
 
 popupEditBtnClose.addEventListener('click', () => {
