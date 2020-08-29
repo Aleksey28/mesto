@@ -2,6 +2,8 @@ const content = document.querySelector('.content');
 const editButton = content.querySelector('.profile__btn_action_edit');
 const addButton = content.querySelector('.profile__btn_action_add');
 
+const popupArr = Array.from(document.querySelectorAll('.popup'));
+
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupEditInputName = popupEdit.querySelector('.popup__input_type_name');
 const popupEditInputProfession = popupEdit.querySelector('.popup__input_type_profession');
@@ -92,6 +94,7 @@ editButton.addEventListener('click', () => {
   openPopup(popupEdit);
   popupEditInputName.value = profileName.textContent;
   popupEditInputProfession.value = profileProfession.textContent;
+
   enableValidation(settingsForValidation);
 });
 
@@ -102,19 +105,29 @@ addButton.addEventListener('click', () => {
   enableValidation(settingsForValidation);
 });
 
-popupEditBtnClose.addEventListener('click', () => {
-  closePopup(popupEdit);
-});
-
-popupAddBtnClose.addEventListener('click', () => {
-  closePopup(popupAdd);
-});
-
-popupShowBtnClose.addEventListener('click', () => {
-  closePopup(popupShow);
-});
-
 popupEdit.addEventListener('submit', submitPopupEdit);
 popupAdd.addEventListener('submit', submitPopupAdd);
+
+popupArr.forEach((popupElement) => {
+  const popupBtnClose = popupElement.querySelector('.popup__btn_action_close');
+
+  popupElement.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closePopup(popupElement);
+    }
+  });
+
+  popupBtnClose.addEventListener('click', () => closePopup(popupElement));
+});
+
+document.addEventListener('keyup', (evt) => {
+  if (evt.key === 'Escape') {
+    popupArr.forEach((popupElement) => {
+      if(popupElement.classList.contains('popup_opened')) {
+        closePopup(popupElement);
+      }
+    });
+  }
+});
 
 initialCards.forEach(addCards);
