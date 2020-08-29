@@ -10,6 +10,6 @@
   .popup__container_type_form{
     width: 75vw;
     max-width: 430px;
-    padding: calc((100vw - 320px) / (600 - 320) * (34 - 30) + 30px) calc((100vw - 320px) / (600 - 320) * (36 - 20) + 20px) calc((100vw - 320px) / (600 - 320) * (36 - 29) + 29px)
+    padding: calc((100vw - 320px) / (600 - 320) * (34 - 30) + 30px) calc((100vw - 320px) / (600 - 320) * (36 - 20) + 20px) calc((100vw - 320px) / (600 - 320) * (36 - 29) + 29px);
   }
 }
