@@ -5,19 +5,18 @@ const addButton = content.querySelector('.profile__btn_action_add');
 const popupArr = Array.from(document.querySelectorAll('.popup'));
 
 const popupEdit = document.querySelector('.popup_type_edit');
+const popupEditContainer = popupEdit.querySelector('.popup__container');
 const popupEditInputName = popupEdit.querySelector('.popup__input_type_name');
 const popupEditInputProfession = popupEdit.querySelector('.popup__input_type_profession');
-const popupEditBtnClose = popupEdit.querySelector('.popup__btn_action_close');
 
 const popupAdd = document.querySelector('.popup_type_add');
+const popupAddContainer = popupAdd.querySelector('.popup__container');
 const popupAddInputName = popupAdd.querySelector('.popup__input_type_name');
 const popupAddInputlink = popupAdd.querySelector('.popup__input_type_link');
-const popupAddBtnClose = popupAdd.querySelector('.popup__btn_action_close');
 
 const popupShow = document.querySelector('.popup_type_show');
 const popupImage = popupShow.querySelector('.popup__image');
 const popupCaption = popupShow.querySelector('.popup__caption');
-const popupShowBtnClose = popupShow.querySelector('.popup__btn_action_close');
 
 const profileName = content.querySelector('.profile__name');
 const profileProfession = content.querySelector('.profile__profession');
@@ -95,14 +94,18 @@ editButton.addEventListener('click', () => {
   popupEditInputName.value = profileName.textContent;
   popupEditInputProfession.value = profileProfession.textContent;
 
-  enableValidation(settingsForValidation);
+  //Если не сделать reset то:
+  //1. кнопка отправки будет заблокирована в любом случае, так как на момент инициализации валидации поля попап не заполнены.
+  //2. В случае если оставить форму с ошибками и закрыть, то при открытии ошибки останутся, а данные будут перезаполнены.
+  resetValidationForForm(settingsForValidation, popupEditContainer);
 });
 
 addButton.addEventListener('click', () => {
   openPopup(popupAdd);
   popupAddInputName.value = '';
   popupAddInputlink.value = '';
-  enableValidation(settingsForValidation);
+
+  resetValidationForForm(settingsForValidation, popupAddContainer);
 });
 
 popupEdit.addEventListener('submit', submitPopupEdit);

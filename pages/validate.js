@@ -42,12 +42,14 @@ const toggleBtn = (settings, inputList, buttonElement) => {
 }
 
 const setEventListeners = (settings, formElement) => {
+
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
   if (!inputList.length) {
     return;
   }
+
 
   toggleBtn(settings, inputList, buttonElement);
 
@@ -59,6 +61,17 @@ const setEventListeners = (settings, formElement) => {
   });
 };
 
+const resetValidationForForm = (settings, formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+  const buttonElement = formElement.querySelector(settings.submitButtonSelector);
+
+  toggleBtn(settings, inputList, buttonElement);
+
+  inputList.forEach((inputElement) => {
+    hideInputError(settings, formElement, inputElement);
+  });
+};
+
 const enableValidation = (settings) => {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
 
@@ -66,3 +79,6 @@ const enableValidation = (settings) => {
     setEventListeners(settings, formElement);
   });
 };
+
+
+enableValidation(settingsForValidation);
