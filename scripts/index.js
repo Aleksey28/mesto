@@ -27,23 +27,32 @@ const cardTemplate = document.querySelector('#card-template').content;
 
 const openPopup = (popupToOpen) => {
   popupToOpen.classList.add('popup_opened');
-}
+  document.addEventListener('keyup', closeOpenedPopup);
+};
 
 const closePopup = (popupToClose) => {
   popupToClose.classList.remove('popup_opened');
-}
+  document.removeEventListener('keyup', closeOpenedPopup);
+};
+
+const closeOpenedPopup = (evt) => {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+};
 
 const deleteCard = (evt) => {
   evt.target.closest('.card').remove();
-}
+};
 
 const likeCard = (evt) => {
   if (evt.target.textContent === String.fromCodePoint(9825)) {
     evt.target.textContent = String.fromCodePoint(10084);
   } else {
     evt.target.textContent = String.fromCodePoint(9825);
-  }
-}
+  };
+};
 
 const addCards = (cardData) => {
 
@@ -67,7 +76,7 @@ const addCards = (cardData) => {
     popupImage.alt = evt.target.alt;
     popupCaption.textContent = evt.target.closest('.card').querySelector('.card__caption').textContent;
   });
-}
+};
 
 const submitPopupEdit = (evt) => {
   evt.preventDefault();
@@ -75,7 +84,7 @@ const submitPopupEdit = (evt) => {
   profileName.textContent = popupEditInputName.value;
   profileProfession.textContent = popupEditInputProfession.value;
   closePopup(popupEdit);
-}
+};
 
 const submitPopupAdd = (evt) => {
   evt.preventDefault();
@@ -87,7 +96,7 @@ const submitPopupAdd = (evt) => {
   });
 
   closePopup(popupAdd);
-}
+};
 
 editButton.addEventListener('click', () => {
   openPopup(popupEdit);
@@ -121,16 +130,6 @@ popupArr.forEach((popupElement) => {
   });
 
   popupBtnClose.addEventListener('click', () => closePopup(popupElement));
-});
-
-document.addEventListener('keyup', (evt) => {
-  if (evt.key === 'Escape') {
-    popupArr.forEach((popupElement) => {
-      if(popupElement.classList.contains('popup_opened')) {
-        closePopup(popupElement);
-      }
-    });
-  }
 });
 
 initialCards.forEach(addCards);

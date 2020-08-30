@@ -9,16 +9,16 @@ const settingsForValidation = {
 
 const showInputError = (settings, formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add('popup__input_type_error');
+  inputElement.classList.add(settings.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__error_visible');
+  errorElement.classList.add(settings.errorClass);
 };
 
 const hideInputError = (settings, formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove('popup__input_type_error');
+  inputElement.classList.remove(settings.inputErrorClass);
   errorElement.textContent = '';
-  errorElement.classList.remove('popup__error_visible');
+  errorElement.classList.remove(settings.errorClass);
 };
 
 const checkInputValidity = (settings, formElement, inputElement) => {
