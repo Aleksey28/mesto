@@ -106,7 +106,13 @@ editButton.addEventListener('click', () => {
   //Если не сделать reset то:
   //1. кнопка отправки будет заблокирована в любом случае, так как на момент инициализации валидации поля попап не заполнены.
   //2. В случае если оставить форму с ошибками и закрыть, то при открытии ошибки останутся, а данные будут перезаполнены.
-  resetValidationForForm(settingsForValidation, popupEditContainer);
+  resetValidationForForm(popupEditContainer, {
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__btn_action_submit',
+    inactiveButtonClass: 'popup__btn__disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+  });
 });
 
 addButton.addEventListener('click', () => {
@@ -114,7 +120,13 @@ addButton.addEventListener('click', () => {
   popupAddInputName.value = '';
   popupAddInputlink.value = '';
 
-  resetValidationForForm(settingsForValidation, popupAddContainer);
+  resetValidationForForm(popupAddContainer, {
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__btn_action_submit',
+    inactiveButtonClass: 'popup__btn__disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+  });
 });
 
 popupEdit.addEventListener('submit', submitPopupEdit);
