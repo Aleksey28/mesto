@@ -144,4 +144,10 @@ popupArr.forEach((popupElement) => {
   popupBtnClose.addEventListener('click', () => closePopup(popupElement));
 });
 
-initialCards.forEach(addCards);
+// initialCards.forEach(addCards);
+
+initialCards.forEach((item) => {
+  const card = new Card(item, '#card-template')
+  const cardElement = card.render();
+  cards.append(cardElement);
+})
