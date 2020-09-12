@@ -1,10 +1,13 @@
 class Card {
-  constructor (data, cardSelector, openPopup){
+  constructor (data, cardSelector, openPopup, popupSelector){
     this._name = data.name;
     this._link = data.link;
     this._description = data.description;
     this._cardSelector = cardSelector;
+    //Передаю внешнюю функцию для открытия попапа
     this._openPopup = openPopup;
+    //Также передаю селектор попапа, который необходимо будет открыть
+    this._popupSelector = popupSelector;
   }
 
   _getTemplate() {
@@ -17,15 +20,11 @@ class Card {
   }
 
   _handleLikeCard() {
-    if (this._elementLike.textContent === String.fromCodePoint(9825)) {
-      this._elementLike.textContent = String.fromCodePoint(10084);
-    } else {
-      this._elementLike.textContent = String.fromCodePoint(9825);
-    };
+    this._elementLike.textContent = this._elementLike.textContent === String.fromCodePoint(9825) ? String.fromCodePoint(10084) : String.fromCodePoint(9825);
   }
 
   _handleShowCardImage() {
-    const showPopup = document.querySelector('.popup_type_show');
+    const showPopup = document.querySelector(this._popupSelector);
     const showPopupImage = showPopup.querySelector('.popup__image');
     const showPopupCaption = showPopup.querySelector('.popup__caption');
 
@@ -44,11 +43,13 @@ class Card {
     this._cardElementImage.addEventListener('click', () => this._handleShowCardImage());
   }
 
-  render() {
+  generateCard() {
     this._element = this._getTemplate();
     this._elementLike = this._element.querySelector('.card__btn_action_like');
     this._cardElementImage = this._element.querySelector('.card__image');
 
+    //В отличии от других элементов карточки, этот записываю в константу и просто помещаю текст,
+    //т.к. Caption используется только в одном месте при создании и не имеет смысл создавать локальные переменные для данного объекта Card
     const cardElementCaption = this._element.querySelector('.card__caption');
 
     this._cardElementImage.src = this._link;
