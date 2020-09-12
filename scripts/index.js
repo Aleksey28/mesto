@@ -3,16 +3,25 @@ const editButton = content.querySelector('.profile__btn_action_edit');
 const addButton = content.querySelector('.profile__btn_action_add');
 
 const popupArr = Array.from(document.querySelectorAll('.popup'));
+const validationSettings = {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__btn_action_submit',
+  inactiveButtonClass: 'popup__btn__disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
 
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupEditContainer = popupEdit.querySelector('.popup__container');
 const popupEditInputName = popupEdit.querySelector('.popup__input_type_name');
 const popupEditInputProfession = popupEdit.querySelector('.popup__input_type_profession');
+const popupEditValidator = new FormValidator(validationSettings, popupEdit);
 
 const popupAdd = document.querySelector('.popup_type_add');
 const popupAddContainer = popupAdd.querySelector('.popup__container');
 const popupAddInputName = popupAdd.querySelector('.popup__input_type_name');
 const popupAddInputlink = popupAdd.querySelector('.popup__input_type_link');
+const popupAddValidator = new FormValidator(validationSettings, popupAdd);
 
 const profileName = content.querySelector('.profile__name');
 const profileProfession = content.querySelector('.profile__profession');
@@ -69,13 +78,7 @@ editButton.addEventListener('click', () => {
   //Если не сделать reset то:
   //1. кнопка отправки будет заблокирована в любом случае, так как на момент инициализации валидации поля попап не заполнены.
   //2. В случае если оставить форму с ошибками и закрыть, то при открытии ошибки останутся, а данные будут перезаполнены.
-  resetValidationForForm(popupEditContainer, {
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__btn_action_submit',
-    inactiveButtonClass: 'popup__btn__disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-  });
+  popupEditValidator.resetValidationForForm();
 });
 
 addButton.addEventListener('click', () => {
@@ -83,14 +86,11 @@ addButton.addEventListener('click', () => {
   popupAddInputName.value = '';
   popupAddInputlink.value = '';
 
-  resetValidationForForm(popupAddContainer, {
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__btn_action_submit',
-    inactiveButtonClass: 'popup__btn__disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-  });
+  popupAddValidator.resetValidationForForm();
 });
+
+popupEditValidator.enableValidation();
+popupAddValidator.enableValidation();
 
 popupEdit.addEventListener('submit', submitPopupEdit);
 popupAdd.addEventListener('submit', submitPopupAdd);
