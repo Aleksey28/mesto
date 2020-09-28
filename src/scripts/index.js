@@ -1,3 +1,5 @@
+import '../pages/index.css';
+
 const content = document.querySelector(".content");
 const editButton = content.querySelector(".profile__btn_action_edit");
 const addButton = content.querySelector(".profile__btn_action_add");
