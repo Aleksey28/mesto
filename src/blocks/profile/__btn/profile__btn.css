@@ -1,10 +1,7 @@
 .profile__btn{
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 
   cursor: pointer;
-  -webkit-transition: opacity .2s ease-in;
-  -o-transition: opacity .2s ease-in;
   transition: opacity .2s ease-in;
 
   outline: none;

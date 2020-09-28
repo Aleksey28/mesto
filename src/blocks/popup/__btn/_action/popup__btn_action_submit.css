@@ -1,8 +1,6 @@
 .popup__btn_action_submit {
   height: 50.15px;
 
-  -webkit-transition: background-color .2s ease-in;
-  -o-transition: background-color .2s ease-in;
   transition: background-color .2s ease-in;
   text-align: center;
 

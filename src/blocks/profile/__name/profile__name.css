@@ -1,7 +1,5 @@
 .profile__name {
   overflow: hidden;
-  -webkit-box-flex: 1;
-  -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 
   max-width: calc(100% - 17px - 24px - 30px);
@@ -9,7 +7,6 @@
 
   white-space: nowrap;
   text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
 
   color: #FFFFFF;
 
@@ -28,8 +25,6 @@
 
 @media screen and (max-width: 600px) {
   .profile__name {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 0 auto;
     flex: 1 0 auto;
 
     margin: 1px 0px -4px 4px;

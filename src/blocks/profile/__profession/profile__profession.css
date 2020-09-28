@@ -1,14 +1,11 @@
 .profile__profession {
   overflow: hidden;
-  -webkit-box-flex: 1;
-  -ms-flex: 1 0 100%;
   flex: 1 0 100%;
 
   margin: 0;
 
   white-space: nowrap;
   text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
 
   color: #FFFFFF;
 

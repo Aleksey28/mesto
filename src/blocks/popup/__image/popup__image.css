@@ -3,8 +3,6 @@
   max-width: 75vw;
   max-height: 75vh;
 
-  -o-object-fit: cover;
   object-fit: cover;
-  -o-object-position: center;
   object-position: center;
 }

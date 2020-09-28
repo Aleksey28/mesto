@@ -1,8 +1,5 @@
 .profile__info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 
   max-width: 370px;
@@ -18,8 +15,6 @@
 
 @media screen and (max-width: 600px) {
   .profile__info {
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
 
     width: 100%;
