@@ -1,9 +1,9 @@
-import mysteryShack from "../../images/card-mystery-shack.jpg";
-import canyon from "../../images/card-canyon.jpg";
-import northwestManor from "../../images/card-northwest-manor.jpg";
-import fromDuskToDawn from "../../images/card-from-dusk-to-dawn.jpg";
-import islandWasAsked from "../../images/card-island-was-asked.jpg";
-import futureCity from "../../images/card-future-city.jpg";
+import mysteryShack from "../images/card-mystery-shack.jpg";
+import canyon from "../images/card-canyon.jpg";
+import northwestManor from "../images/card-northwest-manor.jpg";
+import fromDuskToDawn from "../images/card-from-dusk-to-dawn.jpg";
+import islandWasAsked from "../images/card-island-was-asked.jpg";
+import futureCity from "../images/card-future-city.jpg";
 
 export const initialCards = [
   {
