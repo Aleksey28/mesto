@@ -6,4 +6,8 @@ export default class Popup {
   open() {
     this._popupElement.classList.add("popup_opened");
   }
+
+  close() {
+    this._popupElement.classList.remove("popup_opened");
+  }
 }
