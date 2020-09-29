@@ -25,7 +25,7 @@ popupAdd.setEventListeners();
 const popupEdit = new PopupWithForm(selectorPopupWithEditForm);
 popupEdit.setEventListeners();
 
-const userInfo = new UserInfo(selectorsUserInfo)
+const userInfo = new UserInfo(selectorsUserInfo);
 
 const cardList = new Section({
   items: initialCards,
