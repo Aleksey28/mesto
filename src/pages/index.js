@@ -18,11 +18,11 @@ import UserInfo from "../components/UserInfo.js";
 const popupShow = new PopupWithImage(selectorPopupWithImage);
 popupShow.setEventListeners();
 
-const popupWithForm = new PopupWithImage(selectorPopupWithAddForm);
-popupWithImage.setEventListeners();
+const popupAdd = new PopupWithForm(selectorPopupWithAddForm);
+popupAdd.setEventListeners();
 
-const popupWithForm = new PopupWithImage(selectorPopupWithAddForm);
-popupWithImage.setEventListeners();
+const popupEdit = new PopupWithForm(selectorPopupWithAddForm);
+popupEdit.setEventListeners();
 
 const cardList = new Section({
   items: initialCards,
