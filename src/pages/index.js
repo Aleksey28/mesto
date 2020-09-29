@@ -3,11 +3,12 @@ import "./index.css";
 import {
   initialCards,
   cardListSelector,
+  selectorPopupWithImage,
 } from "../utils/constants.js";
 
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
-import Popup from "../components/Popup.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 
 
 // // const content = document.querySelector(".content");
@@ -42,22 +43,22 @@ import Popup from "../components/Popup.js";
 
 // // const cards = content.querySelector(".cards");
 
-const openPopup = (popupToOpen) => {
-  popupToOpen.classList.add("popup_opened");
-  document.addEventListener("keyup", closeOpenedPopup);
-};
+// const openPopup = (popupToOpen) => {
+//   popupToOpen.classList.add("popup_opened");
+//   document.addEventListener("keyup", closeOpenedPopup);
+// };
 
-const closePopup = (popupToClose) => {
-  popupToClose.classList.remove("popup_opened");
-  document.removeEventListener("keyup", closeOpenedPopup);
-};
+// const closePopup = (popupToClose) => {
+//   popupToClose.classList.remove("popup_opened");
+//   document.removeEventListener("keyup", closeOpenedPopup);
+// };
 
-const closeOpenedPopup = (evt) => {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector(".popup_opened");
-    closePopup(openedPopup);
-  }
-};
+// const closeOpenedPopup = (evt) => {
+//   if (evt.key === "Escape") {
+//     const openedPopup = document.querySelector(".popup_opened");
+//     closePopup(openedPopup);
+//   }
+// };
 
 // // const addCards = (cardData) => {
 // //   const cardElement = new Card(
@@ -128,14 +129,18 @@ const closeOpenedPopup = (evt) => {
 
 // initialCards.forEach(addCards);
 
+const popupWithImage = new PopupWithImage(selectorPopupWithImage);
+popupWithImage.setEventListeners();
+
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
     const cardElement = new Card(
       item,
       "#card-template",
-      openPopup,
-      ".popup_type_show"
+      (item) => {
+        popupWithImage.open(item);
+      }
     ).generateCard();
     cardList.addItem(cardElement);
   }

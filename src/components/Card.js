@@ -1,13 +1,10 @@
 export default class Card {
-  constructor(data, cardSelector, openPopup, popupSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._description = data.description;
     this._cardSelector = cardSelector;
-    //Передаю внешнюю функцию для открытия попапа
-    this._openPopup = openPopup;
-    //Также передаю селектор попапа, который необходимо будет открыть
-    this._popupSelector = popupSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -29,17 +26,6 @@ export default class Card {
         : String.fromCodePoint(9825);
   }
 
-  _handleShowCardImage() {
-    const showPopup = document.querySelector(this._popupSelector);
-    const showPopupImage = showPopup.querySelector(".popup__image");
-    const showPopupCaption = showPopup.querySelector(".popup__caption");
-
-    showPopupImage.src = this._link;
-    showPopupImage.alt = this._description;
-    showPopupCaption.textContent = this._name;
-    this._openPopup(showPopup);
-  }
-
   _setEventListeners() {
     const cardElementBtnTrush = this._element.querySelector(
       ".card__btn_action_trush"
@@ -53,7 +39,10 @@ export default class Card {
       this._handleDeleteCard()
     );
     this._cardElementImage.addEventListener("click", () =>
-      this._handleShowCardImage()
+      this._handleCardClick({
+        link: this._link,
+        name: this._name,
+        description: this._description})
     );
   }
 

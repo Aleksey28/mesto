@@ -38,32 +38,33 @@ export const initialCards = [
   },
 ];
 
-export const content = document.querySelector(".content");
-export const editButton = content.querySelector(".profile__btn_action_edit");
-export const addButton = content.querySelector(".profile__btn_action_add");
+// export const content = document.querySelector(".content");
+// export const editButton = content.querySelector(".profile__btn_action_edit");
+// export const addButton = content.querySelector(".profile__btn_action_add");
 
-export const popupArr = Array.from(document.querySelectorAll(".popup"));
-export const validationSettings = {
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__btn_action_submit",
-  inactiveButtonClass: "popup__btn__disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-};
+// export const popupArr = Array.from(document.querySelectorAll(".popup"));
+// export const validationSettings = {
+//   inputSelector: ".popup__input",
+//   submitButtonSelector: ".popup__btn_action_submit",
+//   inactiveButtonClass: "popup__btn__disabled",
+//   inputErrorClass: "popup__input_type_error",
+//   errorClass: "popup__error_visible",
+// };
 
-export const popupEdit = document.querySelector(".popup_type_edit");
-export const popupEditContainer = popupEdit.querySelector(".popup__container");
-export const popupEditInputName = popupEdit.querySelector(".popup__input_type_name");
-export const popupEditInputProfession = popupEdit.querySelector(
-  ".popup__input_type_profession"
-);
+// export const popupEdit = document.querySelector(".popup_type_edit");
+// export const popupEditContainer = popupEdit.querySelector(".popup__container");
+// export const popupEditInputName = popupEdit.querySelector(".popup__input_type_name");
+// export const popupEditInputProfession = popupEdit.querySelector(
+//   ".popup__input_type_profession"
+// );
 
-export const popupAdd = document.querySelector(".popup_type_add");
-export const popupAddContainer = popupAdd.querySelector(".popup__container");
-export const popupAddInputName = popupAdd.querySelector(".popup__input_type_name");
-export const popupAddInputlink = popupAdd.querySelector(".popup__input_type_link");
+// export const popupAdd = document.querySelector(".popup_type_add");
+// export const popupAddContainer = popupAdd.querySelector(".popup__container");
+// export const popupAddInputName = popupAdd.querySelector(".popup__input_type_name");
+// export const popupAddInputlink = popupAdd.querySelector(".popup__input_type_link");
 
-export const profileName = content.querySelector(".profile__name");
-export const profileProfession = content.querySelector(".profile__profession");
+// export const profileName = content.querySelector(".profile__name");
+// export const profileProfession = content.querySelector(".profile__profession");
 
 export const cardListSelector = '.cards';
+export const selectorPopupWithImage = ".popup_type_show";
