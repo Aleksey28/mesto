@@ -4,6 +4,8 @@ import {
   initialCards,
   cardListSelector,
   selectorPopupWithImage,
+  selectorPopupWithAddForm,
+  selectorPopupWithEditForm,
 } from "../utils/constants.js";
 
 import Section from "../components/Section.js";
@@ -11,6 +13,32 @@ import Card from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+
+
+const popupShow = new PopupWithImage(selectorPopupWithImage);
+popupShow.setEventListeners();
+
+const popupWithForm = new PopupWithImage(selectorPopupWithAddForm);
+popupWithImage.setEventListeners();
+
+const popupWithForm = new PopupWithImage(selectorPopupWithAddForm);
+popupWithImage.setEventListeners();
+
+const cardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const cardElement = new Card(
+      item,
+      "#card-template",
+      (item) => {
+        popupShow.open(item);
+      }
+    ).generateCard();
+    cardList.addItem(cardElement);
+  }
+}, cardListSelector)
+
+cardList.rendererItem();
 
 
 // // const content = document.querySelector(".content");
@@ -130,22 +158,3 @@ import UserInfo from "../components/UserInfo.js";
 // });
 
 // initialCards.forEach(addCards);
-
-const popupWithImage = new PopupWithImage(selectorPopupWithImage);
-popupWithImage.setEventListeners();
-
-const cardList = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    const cardElement = new Card(
-      item,
-      "#card-template",
-      (item) => {
-        popupWithImage.open(item);
-      }
-    ).generateCard();
-    cardList.addItem(cardElement);
-  }
-}, cardListSelector)
-
-cardList.rendererItem();
