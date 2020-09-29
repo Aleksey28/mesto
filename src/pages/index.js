@@ -6,6 +6,7 @@ import {
   selectorPopupWithImage,
   selectorPopupWithAddForm,
   selectorPopupWithEditForm,
+  selectorsUserInfo,
 } from "../utils/constants.js";
 
 import Section from "../components/Section.js";
@@ -21,8 +22,10 @@ popupShow.setEventListeners();
 const popupAdd = new PopupWithForm(selectorPopupWithAddForm);
 popupAdd.setEventListeners();
 
-const popupEdit = new PopupWithForm(selectorPopupWithAddForm);
+const popupEdit = new PopupWithForm(selectorPopupWithEditForm);
 popupEdit.setEventListeners();
+
+const userInfo = new UserInfo(selectorsUserInfo)
 
 const cardList = new Section({
   items: initialCards,

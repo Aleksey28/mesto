@@ -38,6 +38,16 @@ export const initialCards = [
   },
 ];
 
+export const cardListSelector = '.cards';
+export const selectorPopupWithImage = ".popup_type_show";
+export const selectorPopupWithAddForm = ".popup_type_add";
+export const selectorPopupWithEditForm = ".popup_type_edit";
+
+export const selectorsUserInfo = {
+  selectorName: ".profile__name",
+  selectorProfession: ".profile__profession",
+};
+
 // export const content = document.querySelector(".content");
 // export const editButton = content.querySelector(".profile__btn_action_edit");
 // export const addButton = content.querySelector(".profile__btn_action_add");
@@ -65,8 +75,3 @@ export const initialCards = [
 
 // export const profileName = content.querySelector(".profile__name");
 // export const profileProfession = content.querySelector(".profile__profession");
-
-export const cardListSelector = '.cards';
-export const selectorPopupWithImage = ".popup_type_show";
-export const selectorPopupWithAddForm = ".popup_type_add";
-export const selectorPopupWithEditForm = ".popup_type_edit";
