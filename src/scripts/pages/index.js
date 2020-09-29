@@ -7,6 +7,7 @@ import {
 
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
+import Popup from "../components/Popup.js";
 
 
 // // const content = document.querySelector(".content");
