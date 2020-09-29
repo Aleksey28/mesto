@@ -1,4 +1,4 @@
-class Card {
+export default class Card {
   constructor(data, cardSelector, openPopup, popupSelector) {
     this._name = data.name;
     this._link = data.link;
