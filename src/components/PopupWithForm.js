@@ -12,6 +12,29 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    return;
+    return {
+      name: this._popupInputName.value,
+      profession: this._popupInputProfession.value,
+      link: this._popupInputlink.value,
+    };
+  }
+
+  _setInputValues({name, profession, link}) {
+    this._popupInputName.value = name;
+    if(!!this._popupInputProfession) {
+      this._popupInputProfession.value = profession;
+    }
+    if(!!this._popupInputlink) {
+      this._popupInputlink.value = link;
+    }
+  }
+
+  setEventListeners() {
+    super.setEventListeners();
+  }
+
+  open(info) {
+    super.open();
+    this._setInputValues(info);
   }
 }

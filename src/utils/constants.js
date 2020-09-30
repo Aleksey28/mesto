@@ -48,9 +48,9 @@ export const selectorsUserInfo = {
   selectorProfession: ".profile__profession",
 };
 
-// export const content = document.querySelector(".content");
-// export const editButton = content.querySelector(".profile__btn_action_edit");
-// export const addButton = content.querySelector(".profile__btn_action_add");
+export const content = document.querySelector(".content");
+export const editButton = content.querySelector(".profile__btn_action_edit");
+export const addButton = content.querySelector(".profile__btn_action_add");
 
 // export const popupArr = Array.from(document.querySelectorAll(".popup"));
 // export const validationSettings = {

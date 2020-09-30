@@ -7,6 +7,7 @@ import {
   selectorPopupWithAddForm,
   selectorPopupWithEditForm,
   selectorsUserInfo,
+  editButton,
 } from "../utils/constants.js";
 
 import Section from "../components/Section.js";
@@ -15,6 +16,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
+const userInfo = new UserInfo(selectorsUserInfo);
 
 const popupShow = new PopupWithImage(selectorPopupWithImage);
 popupShow.setEventListeners();
@@ -22,59 +24,61 @@ popupShow.setEventListeners();
 const popupAdd = new PopupWithForm(selectorPopupWithAddForm);
 popupAdd.setEventListeners();
 
-const popupEdit = new PopupWithForm(selectorPopupWithEditForm);
+const popupEdit = new PopupWithForm(selectorPopupWithEditForm, (userInfo) => {
+  userInfo.setUserInfo(userInfo);
+});
 popupEdit.setEventListeners();
 
-const userInfo = new UserInfo(selectorsUserInfo);
+editButton.addEventListener("click", () => {
+  popupEdit.open(userInfo.getUserInfo());
+});
 
-const cardList = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    const cardElement = new Card(
-      item,
-      "#card-template",
-      (item) => {
+const cardList = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const cardElement = new Card(item, "#card-template", (item) => {
         popupShow.open(item);
-      }
-    ).generateCard();
-    cardList.addItem(cardElement);
-  }
-}, cardListSelector)
+      }).generateCard();
+      cardList.addItem(cardElement);
+    },
+  },
+  cardListSelector
+);
 
 cardList.rendererItem();
 
+// const content = document.querySelector(".content");
+// const editButton = content.querySelector(".profile__btn_action_edit");
+// const addButton = content.querySelector(".profile__btn_action_add");
 
-// // const content = document.querySelector(".content");
-// // const editButton = content.querySelector(".profile__btn_action_edit");
-// // const addButton = content.querySelector(".profile__btn_action_add");
+// const popupArr = Array.from(document.querySelectorAll(".popup"));
+// const validationSettings = {
+//   inputSelector: ".popup__input",
+//   submitButtonSelector: ".popup__btn_action_submit",
+//   inactiveButtonClass: "popup__btn__disabled",
+//   inputErrorClass: "popup__input_type_error",
+//   errorClass: "popup__error_visible",
+// };
 
-// // const popupArr = Array.from(document.querySelectorAll(".popup"));
-// // const validationSettings = {
-// //   inputSelector: ".popup__input",
-// //   submitButtonSelector: ".popup__btn_action_submit",
-// //   inactiveButtonClass: "popup__btn__disabled",
-// //   inputErrorClass: "popup__input_type_error",
-// //   errorClass: "popup__error_visible",
-// // };
-
-// // const popupEdit = document.querySelector(".popup_type_edit");
-// // const popupEditContainer = popupEdit.querySelector(".popup__container");
-// // const popupEditInputName = popupEdit.querySelector(".popup__input_type_name");
-// // const popupEditInputProfession = popupEdit.querySelector(
-// //   ".popup__input_type_profession"
-// // );
+// const popupEdit = document.querySelector(".popup_type_edit");
+// const popupEditContainer = popupEdit.querySelector(".popup__container");
+// const popupEditInputName = popupEdit.querySelector(".popup__input_type_name");
+// const popupEditInputProfession = popupEdit.querySelector(
+//   ".popup__input_type_profession"
+// );
 // const popupEditValidator = new FormValidator(validationSettings, popupEdit);
 
-// // const popupAdd = document.querySelector(".popup_type_add");
-// // const popupAddContainer = popupAdd.querySelector(".popup__container");
-// // const popupAddInputName = popupAdd.querySelector(".popup__input_type_name");
-// // const popupAddInputlink = popupAdd.querySelector(".popup__input_type_link");
+// const popupAdd = document.querySelector(".popup_type_add");
+// const popupAddContainer = popupAdd.querySelector(".popup__container");
+// const popupAddInputName = popupAdd.querySelector(".popup__input_type_name");
+// const popupAddInputlink = popupAdd.querySelector(".popup__input_type_link");
 // const popupAddValidator = new FormValidator(validationSettings, popupAdd);
 
-// // const profileName = content.querySelector(".profile__name");
-// // const profileProfession = content.querySelector(".profile__profession");
+// const profileName = content.querySelector(".profile__name");
+// const profileProfession = content.querySelector(".profile__profession");
 
-// // const cards = content.querySelector(".cards");
+// const cards = content.querySelector(".cards");
 
 // const openPopup = (popupToOpen) => {
 //   popupToOpen.classList.add("popup_opened");
@@ -93,15 +97,15 @@ cardList.rendererItem();
 //   }
 // };
 
-// // const addCards = (cardData) => {
-// //   const cardElement = new Card(
-// //     cardData,
-// //     "#card-template",
-// //     openPopup,
-// //     ".popup_type_show"
-// //   ).generateCard();
-// //   cards.prepend(cardElement);
-// // };
+// const addCards = (cardData) => {
+//   const cardElement = new Card(
+//     cardData,
+//     "#card-template",
+//     openPopup,
+//     ".popup_type_show"
+//   ).generateCard();
+//   cards.prepend(cardElement);
+// };
 
 // const submitPopupEdit = (evt) => {
 //   evt.preventDefault();
