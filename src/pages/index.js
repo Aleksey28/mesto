@@ -19,25 +19,6 @@ import UserInfo from "../components/UserInfo.js";
 
 const userInfo = new UserInfo(selectorsUserInfo);
 
-const popupShow = new PopupWithImage(selectorPopupWithImage);
-popupShow.setEventListeners();
-
-const popupAdd = new PopupWithForm(selectorPopupWithAddForm);
-popupAdd.setEventListeners();
-
-const popupEdit = new PopupWithForm(selectorPopupWithEditForm, (userInfo) => {
-  userInfo.setUserInfo(userInfo);
-});
-popupEdit.setEventListeners();
-
-editButton.addEventListener("click", () => {
-  popupEdit.open(userInfo.getUserInfo());
-});
-
-addButton.addEventListener("click", () => {
-  popupAdd.open();
-});
-
 const cardList = new Section(
   {
     items: initialCards,
@@ -52,6 +33,34 @@ const cardList = new Section(
 );
 
 cardList.rendererItem();
+
+const popupShow = new PopupWithImage(selectorPopupWithImage);
+popupShow.setEventListeners();
+
+const popupAdd = new PopupWithForm(selectorPopupWithAddForm, (data) => {
+  const cardElement = new Card(data, "#card-template", (item) => {
+    popupShow.open(item);
+  }).generateCard();
+  cardList.addItem(cardElement);
+});
+popupAdd.setEventListeners();
+
+const popupEdit = new PopupWithForm(selectorPopupWithEditForm, (data) => {
+  userInfo.setUserInfo(data);
+});
+popupEdit.setEventListeners();
+
+editButton.addEventListener("click", () => {
+  popupEdit.open(userInfo.getUserInfo());
+});
+
+addButton.addEventListener("click", () => {
+  popupAdd.open({
+    name: "",
+    link: "",
+  });
+});
+
 
 // const content = document.querySelector(".content");
 // const editButton = content.querySelector(".profile__btn_action_edit");

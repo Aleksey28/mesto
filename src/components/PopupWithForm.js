@@ -15,11 +15,15 @@ export default class PopupWithForm extends Popup {
     );
   }
 
+  _grtInputValue(inputElement) {
+    return !!inputElement ? inputElement.value : null;
+  }
+
   _getInputValues() {
     return {
-      name: this._popupInputName.value,
-      profession: this._popupInputProfession.value,
-      link: this._popupInputlink.value,
+      name: this._grtInputValue(this._popupInputName),
+      profession: this._grtInputValue(this._popupInputProfession),
+      link: this._grtInputValue(this._popupInputlink),
     };
   }
 
@@ -35,8 +39,15 @@ export default class PopupWithForm extends Popup {
     this._setInputValue(this._popupInputlink, link);
   }
 
+  _handleSubmitPopup(evt) {
+    evt.preventDefault();
+    this._handlerSubmit(this._getInputValues());
+    this.close();
+  }
+
   setEventListeners() {
     super.setEventListeners();
+    this._popupElement.addEventListener("submit", this._handleSubmitPopup.bind(this));
   }
 
   open(info) {
