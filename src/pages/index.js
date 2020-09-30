@@ -8,6 +8,7 @@ import {
   selectorPopupWithEditForm,
   selectorsUserInfo,
   editButton,
+  addButton,
 } from "../utils/constants.js";
 
 import Section from "../components/Section.js";
@@ -31,6 +32,10 @@ popupEdit.setEventListeners();
 
 editButton.addEventListener("click", () => {
   popupEdit.open(userInfo.getUserInfo());
+});
+
+addButton.addEventListener("click", () => {
+  popupAdd.open();
 });
 
 const cardList = new Section(

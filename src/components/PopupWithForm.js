@@ -4,8 +4,12 @@ export default class PopupWithForm extends Popup {
   constructor(selector, handlerSubmit) {
     super(selector);
     this._handlerSubmit = handlerSubmit;
-    this._popupInputName = this._popupElement.querySelector(".popup__input_type_name");
-    this._popupInputlink = this._popupElement.querySelector(".popup__input_type_link");
+    this._popupInputName = this._popupElement.querySelector(
+      ".popup__input_type_name"
+    );
+    this._popupInputlink = this._popupElement.querySelector(
+      ".popup__input_type_link"
+    );
     this._popupInputProfession = this._popupElement.querySelector(
       ".popup__input_type_profession"
     );
@@ -19,14 +23,16 @@ export default class PopupWithForm extends Popup {
     };
   }
 
-  _setInputValues({name, profession, link}) {
-    this._popupInputName.value = name;
-    if(!!this._popupInputProfession) {
-      this._popupInputProfession.value = profession;
+  _setInputValue(inputElement, value) {
+    if (!!inputElement) {
+      inputElement.value = value;
     }
-    if(!!this._popupInputlink) {
-      this._popupInputlink.value = link;
-    }
+  }
+
+  _setInputValues({ name, profession, link }) {
+    this._setInputValue(this._popupInputName, name);
+    this._setInputValue(this._popupInputProfession, profession);
+    this._setInputValue(this._popupInputlink, link);
   }
 
   setEventListeners() {
