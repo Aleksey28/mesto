@@ -5,3 +5,5 @@
 *.log
 *.pdf
 *.xls
+node_modules
+dist
