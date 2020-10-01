@@ -1,42 +1,32 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-  constructor(selector, handlerSubmit) {
+  constructor(selector, inputSelectors, { handlerSubmit, handlerOpen }) {
     super(selector);
     this._handlerSubmit = handlerSubmit;
-    this._popupInputName = this._popupElement.querySelector(
-      ".popup__input_type_name"
-    );
-    this._popupInputlink = this._popupElement.querySelector(
-      ".popup__input_type_link"
-    );
-    this._popupInputProfession = this._popupElement.querySelector(
-      ".popup__input_type_profession"
-    );
-  }
+    this._handlerOpen = handlerOpen;
 
-  _grtInputValue(inputElement) {
-    return !!inputElement ? inputElement.value : null;
+    //В случае если будут добавляться инпуты, не нужно будет модифицировать класс
+    this._inputSelectors = inputSelectors;
+    this._inputSelectorsKeys = Object.keys(inputSelectors);
+    this._inputSelectorsKeys.forEach((key) => {
+      this["_" + key] = this._popupElement.querySelector(inputSelectors[key]);
+    });
   }
 
   _getInputValues() {
-    return {
-      name: this._grtInputValue(this._popupInputName),
-      profession: this._grtInputValue(this._popupInputProfession),
-      link: this._grtInputValue(this._popupInputlink),
-    };
+    let inputValues = {};
+    this._inputSelectorsKeys.map((key) => {
+      inputValues[key] = this["_" + key].value;
+    });
+
+    return inputValues;
   }
 
-  _setInputValue(inputElement, value) {
-    if (!!inputElement) {
-      inputElement.value = value;
-    }
-  }
-
-  _setInputValues({ name, profession, link }) {
-    this._setInputValue(this._popupInputName, name);
-    this._setInputValue(this._popupInputProfession, profession);
-    this._setInputValue(this._popupInputlink, link);
+  _setInputValues(info) {
+    this._inputSelectorsKeys.forEach((key) => {
+      this["_" + key].value = info[key];
+    });
   }
 
   _handleSubmitPopup(evt) {
@@ -47,11 +37,20 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this._popupElement.addEventListener("submit", this._handleSubmitPopup.bind(this));
+    this._popupElement.addEventListener(
+      "submit",
+      this._handleSubmitPopup.bind(this)
+    );
   }
 
   open(info) {
     super.open();
     this._setInputValues(info);
+    this._handlerOpen();
+  }
+
+  close() {
+    super.close();
+    this._popupForm.reset();
   }
 }

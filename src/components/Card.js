@@ -42,7 +42,8 @@ export default class Card {
       this._handleCardClick({
         link: this._link,
         name: this._name,
-        description: this._description})
+        description: this._description,
+      })
     );
   }
 

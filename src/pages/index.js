@@ -9,6 +9,9 @@ import {
   selectorsUserInfo,
   editButton,
   addButton,
+  validationSettings,
+  inputSelectorsAddForm,
+  inputSelectorsEditForm,
 } from "../utils/constants.js";
 
 import Section from "../components/Section.js";
@@ -16,6 +19,7 @@ import Card from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import FormValidator from "../components/FormValidator.js";
 
 const userInfo = new UserInfo(selectorsUserInfo);
 
@@ -32,23 +36,53 @@ const cardList = new Section(
   cardListSelector
 );
 
-cardList.rendererItem();
-
 const popupShow = new PopupWithImage(selectorPopupWithImage);
+
+const popupAddValidator = new FormValidator(
+  validationSettings,
+  selectorPopupWithAddForm
+);
+const popupEditValidator = new FormValidator(
+  validationSettings,
+  selectorPopupWithEditForm
+);
+
+const popupAdd = new PopupWithForm(
+  selectorPopupWithAddForm,
+  inputSelectorsAddForm,
+  {
+    handlerSubmit: (data) => {
+      const cardElement = new Card(data, "#card-template", (item) => {
+        popupShow.open(item);
+      }).generateCard();
+      cardList.addItem(cardElement);
+    },
+    handlerOpen: popupAddValidator.resetValidationForForm.bind(
+      popupAddValidator
+    ),
+  }
+);
+
+const popupEdit = new PopupWithForm(
+  selectorPopupWithEditForm,
+  inputSelectorsEditForm,
+  {
+    handlerSubmit: (data) => {
+      userInfo.setUserInfo(data);
+    },
+    handlerOpen: popupEditValidator.resetValidationForForm.bind(
+      popupEditValidator
+    ),
+  }
+);
+
+cardList.rendererItems();
 popupShow.setEventListeners();
-
-const popupAdd = new PopupWithForm(selectorPopupWithAddForm, (data) => {
-  const cardElement = new Card(data, "#card-template", (item) => {
-    popupShow.open(item);
-  }).generateCard();
-  cardList.addItem(cardElement);
-});
 popupAdd.setEventListeners();
-
-const popupEdit = new PopupWithForm(selectorPopupWithEditForm, (data) => {
-  userInfo.setUserInfo(data);
-});
 popupEdit.setEventListeners();
+
+popupAddValidator.enableValidation();
+popupEditValidator.enableValidation();
 
 editButton.addEventListener("click", () => {
   popupEdit.open(userInfo.getUserInfo());
@@ -60,7 +94,6 @@ addButton.addEventListener("click", () => {
     link: "",
   });
 });
-
 
 // const content = document.querySelector(".content");
 // const editButton = content.querySelector(".profile__btn_action_edit");

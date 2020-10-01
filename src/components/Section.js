@@ -13,7 +13,7 @@ export default class Section {
     this._container.prepend(element);
   }
 
-  rendererItem() {
+  rendererItems() {
     this._clear();
     this._renderedItems.forEach((item) => {
       this._renderer(item);
