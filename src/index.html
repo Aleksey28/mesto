@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
+  <link rel="shortcut icon" href="./images/header-logo.svg" type="image/svg">
+</head>
+<body class="page">
+  <header class="header">
+    <a href="#">
+      <img src="./images/header-logo.svg" alt="Логотип страницы Место." class="header__logo">
+    </a>
+  </header>
+  <main class="content">
+    <section class="profile">
+      <img src="./images/profile-avatar.jpg" alt="Аватар." class="profile__avatar">
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <button class="profile__btn profile__btn_action_edit" type="button"></button>
+        <p class="profile__profession">Исследователь океана</p>
+      </div>
+      <button class="profile__btn profile__btn_action_add" type="button"></button>
+    </section>
+    <section>
+      <ul class="cards">
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">@ 2020 Попов Алексей</p>
+  </footer>
+
+  <div class="popup popup_type_edit">
+    <form class="popup__container popup__container_type_form" name="container" novalidate>
+      <button class="popup__btn popup__btn_action_close" type="button"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <input type="text" class="popup__input popup__input_type_name" name="name" id="edit-name-input" placeholder="Заголовок профиля" minlength="2" maxlength="40" required>
+      <span class="popup__error" id="edit-name-input-error"></span>
+      <input type="text" class="popup__input popup__input_type_profession" name="profession" id="profession-input" placeholder="Описание профиля" minlength="2" maxlength="200" required>
+      <span class="popup__error" id="profession-input-error"></span>
+      <button class="popup__btn popup__btn_action_submit" type="submit">Сохранить</button>
+    </form>
+  </div>
+
+  <div class="popup popup_type_add">
+    <form class="popup__container popup__container_type_form" name="container" novalidate>
+      <button class="popup__btn popup__btn_action_close" type="button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <input type="text" class="popup__input popup__input_type_name" name="name" id="add-name-input" placeholder="Название" minlength="2" maxlength="30" required>
+      <span class="popup__error" id="add-name-input-error"></span>
+      <input type="url" class="popup__input popup__input_type_link" name="link" id="link-input" placeholder="Ссылка на картинку" required>
+      <span class="popup__error" id="link-input-error"></span>
+      <button class="popup__btn popup__btn_action_submit" type="submit">Создать</button>
+    </form>
+  </div>
+
+  <div class="popup popup_type_show">
+    <div class="popup__container popup__container_type_show">
+      <button class="popup__btn popup__btn_action_close" type="button"></button>
+      <img src="#" alt="" class="popup__image">
+      <h3 class="popup__caption">Подпись</h3>
+    </div>
+  </div>
+
+  <template id="card-template">
+    <li class="card">
+      <button class="card__btn card__btn_action_trush" type="button"></button>
+      <img src="#" alt="" class="card__image">
+      <div class="card__footer">
+        <h3 class="card__caption"></h3>
+        <button class="card__btn card__btn_action_like" type="button">&#9825;</button>
+      </div>
+    </li>
+  </template>
+
+  <!-- <script src="./scripts/data.js"></script>
+  <script src="./scripts/Card.js"></script>
+  <script src="./scripts/FormValidator.js"></script>
+  <script src="./scripts/index.js"></script> -->
+</body>
+</html>
