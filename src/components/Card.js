@@ -17,13 +17,11 @@ export default class Card {
 
   _handleDeleteCard() {
     this._element.remove();
+    this._element = null;
   }
 
   _handleLikeCard() {
-    this._elementLike.textContent =
-      this._elementLike.textContent === String.fromCodePoint(9825)
-        ? String.fromCodePoint(10084)
-        : String.fromCodePoint(9825);
+    this._elementLike.classList.toggle("card__btn_active_like");
   }
 
   _setEventListeners() {

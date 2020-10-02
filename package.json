@@ -4,7 +4,7 @@
   "description": "mesto",
   "main": "index.js",
   "scripts": {
-    "build": "rd /s /q dist && webpack",
+    "build": "rimraf dist && webpack",
     "build:prod": "npm run build -- --mode production",
     "dev": "webpack-dev-server --open --watch"
   },

@@ -1,11 +1,12 @@
 .card__btn_action_like {
+  width: 20.76px;
+  height: 18.13px;
   padding: 2px 4px;
+  padding: 0;
 
   color: #000;
+  border-radius: 0px;
   background-color: #fff;
-
-  font-size: 24px;
-  font-weight: normal;
-  font-style: normal;
-  line-height: 29px;
+  background-image: url(../../../../images/like.svg);
+  background-size: cover;
 }

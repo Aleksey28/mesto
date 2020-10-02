@@ -15,7 +15,7 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    let inputValues = {};
+    const inputValues = {};
     this._inputSelectorsKeys.map((key) => {
       inputValues[key] = this["_" + key].value;
     });
