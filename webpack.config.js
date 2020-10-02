@@ -1,17 +1,17 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  mode: 'development',
-  entry: './src/pages/index.js',
+  mode: "development",
+  entry: "./src/pages/index.js",
   devServer: {
-    contentBase: './dist',
+    contentBase: "./dist",
     hot: true,
   },
-    output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+  output: {
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
@@ -19,39 +19,43 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env']
+            presets: ["@babel/preset-env"],
           },
-        }
+        },
       },
       {
-        test: /\.(png|svg|jpg|gif|woff|woff2)$/,
-        loader: 'file-loader',
+        test: /\.(png|svg|jpg|gif)$/,
+        loader: "file-loader?name=./images/[name].[ext]",
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        loader: "file-loader?name=./vendor/[name].[ext]",
       },
       {
         test: /\.html$/i,
-        loader: 'html-loader',
+        loader: "html-loader",
       },
       {
         test: /\.css$/i,
         loader: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
-              importLoaders: 1
-            }
+              importLoaders: 1,
+            },
           },
-          'postcss-loader'
+          "postcss-loader",
         ],
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: "./src/index.html",
     }),
-    new MiniCssExtractPlugin()
-  ]
+    new MiniCssExtractPlugin(),
+  ],
 };
