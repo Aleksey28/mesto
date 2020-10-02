@@ -1,6 +1,8 @@
 .card__caption {
   overflow: hidden;
 
+  max-width: calc(100% - 29px);
+
   white-space: nowrap;
   text-overflow: ellipsis;
 
