@@ -23,15 +23,17 @@ import FormValidator from "../components/FormValidator.js";
 
 const userInfo = new UserInfo(selectorsUserInfo);
 
+const addCard = (item) => {
+  const cardElement = new Card(item, "#card-template", (item) => {
+    popupShow.open(item);
+  }).generateCard();
+  cardList.addItem(cardElement);
+};
+
 const cardList = new Section(
   {
     items: initialCards,
-    renderer: (item) => {
-      const cardElement = new Card(item, "#card-template", (item) => {
-        popupShow.open(item);
-      }).generateCard();
-      cardList.addItem(cardElement);
-    },
+    renderer: addCard,
   },
   cardListSelector
 );
@@ -51,12 +53,7 @@ const popupAdd = new PopupWithForm(
   selectorPopupWithAddForm,
   inputSelectorsAddForm,
   {
-    handlerSubmit: (data) => {
-      const cardElement = new Card(data, "#card-template", (item) => {
-        popupShow.open(item);
-      }).generateCard();
-      cardList.addItem(cardElement);
-    },
+    handlerSubmit: addCard,
     handlerOpen: popupAddValidator.resetValidationForForm.bind(
       popupAddValidator
     ),
