@@ -87,8 +87,12 @@ const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
 });
 
 const apiClass = new Api(apiSettings);
-apiClass.getUserData().catch(console.log);
-apiClass.getCardList().catch(console.log);
+// apiClass.getUserData().catch(console.log);
+// apiClass.setUserData({
+//   name: "test1",
+//   about: "test1",
+// });
+// apiClass.getCardList().catch(console.log);
 
 cardList.rendererItems();
 popupShow.setEventListeners();
