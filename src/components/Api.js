@@ -1,3 +1,5 @@
+import { data } from "autoprefixer";
+
 export default class Api {
   constructor({ url, idGroup, token }) {
     this._url = url;
@@ -5,15 +7,14 @@ export default class Api {
     this._token = token;
   }
 
-  getUserData() {
-    fetch(`${this._url}/v1/${this._idGroup}/users/me`, {
+  async getUserData() {
+    const response = await fetch(`${this._url}/v1/${this._idGroup}/users/me`, {
       headers: {
         authorization: this._token,
       },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
+    });
+    const data = await response.json();
+
+    console.log(data);
   }
 }
