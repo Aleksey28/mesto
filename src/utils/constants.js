@@ -70,3 +70,9 @@ export const validationSettings = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
+
+export const apiSettings = {
+  url: "https://mesto.nomoreparties.co",
+  idGroup: "cohort-16",
+  token: "fcd9a632-5cad-436c-b58e-4c80d498006a",
+};

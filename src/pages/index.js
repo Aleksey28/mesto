@@ -13,6 +13,7 @@ import {
   validationSettings,
   inputSelectorsAddForm,
   inputSelectorsEditForm,
+  apiSettings,
 } from "../utils/constants.js";
 
 import Section from "../components/Section.js";
@@ -22,6 +23,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
+import Api from "../components/Api.js";
 
 const userInfo = new UserInfo(selectorsUserInfo);
 
@@ -83,6 +85,8 @@ const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
     console.log("Popup Submit was opened");
   },
 });
+
+const apiClass = new Api(apiSettings);
 
 cardList.rendererItems();
 popupShow.setEventListeners();
