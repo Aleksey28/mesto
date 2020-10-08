@@ -6,6 +6,7 @@ import {
   selectorPopupWithImage,
   selectorPopupWithAddForm,
   selectorPopupWithEditForm,
+  selectorPopupWithConfirm,
   selectorsUserInfo,
   editButton,
   addButton,
@@ -18,6 +19,7 @@ import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 
@@ -73,10 +75,21 @@ const popupEdit = new PopupWithForm(
   }
 );
 
+debugger;
+const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
+  handlerSubmit: () => {
+    console.log("Popup Submit was submited");
+  },
+  handlerOpen: () => {
+    console.log("Popup Submit was opened");
+  },
+});
+
 cardList.rendererItems();
 popupShow.setEventListeners();
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
+popupConfirm.setEventListeners();
 
 popupAddValidator.enableValidation();
 popupEditValidator.enableValidation();

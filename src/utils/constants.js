@@ -42,6 +42,7 @@ export const cardListSelector = ".cards";
 export const selectorPopupWithImage = ".popup_type_show";
 export const selectorPopupWithAddForm = ".popup_type_add";
 export const selectorPopupWithEditForm = ".popup_type_edit";
+export const selectorPopupWithConfirm = ".popup_type_confirm";
 
 export const inputSelectorsAddForm = {
   name: ".popup__input_type_name",
