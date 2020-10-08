@@ -75,7 +75,6 @@ const popupEdit = new PopupWithForm(
   }
 );
 
-debugger;
 const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
   handlerSubmit: () => {
     console.log("Popup Submit was submited");
