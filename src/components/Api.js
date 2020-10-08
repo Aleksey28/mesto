@@ -9,6 +9,7 @@ export default class Api {
 
   async getUserData() {
     const response = await fetch(`${this._url}/v1/${this._idGroup}/users/me`, {
+      method: "GET",
       headers: {
         authorization: this._token,
       },
@@ -16,6 +17,17 @@ export default class Api {
     const data = await response.json();
 
     console.log(data);
-    return data;
+  }
+
+  async getCardList() {
+    const response = await fetch(`${this._url}/v1/${this._idGroup}/cards`, {
+      method: "GET",
+      headers: {
+        authorization: this._token,
+      },
+    });
+    const data = await response.json();
+
+    console.log(data);
   }
 }
