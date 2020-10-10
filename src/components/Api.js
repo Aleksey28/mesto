@@ -41,6 +41,18 @@ export default class Api {
     console.log(data);
   }
 
+  async setAvatar(link) {
+    const response = await this._getProxy(
+      "/users/me/avatar",
+      "PATCH",
+      { "Content-Type": "application/json" },
+      JSON.stringify({ avatar: link })
+    );
+    const data = await response.json();
+
+    console.log(data);
+  }
+
   async getCardList() {
     const response = await this._getProxy("/cards", "GET");
     const data = await response.json();
