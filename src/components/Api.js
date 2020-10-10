@@ -48,7 +48,16 @@ export default class Api {
     console.log(data);
   }
 
-  // async addCard({name, link}){
+  async addCard({ name, link }) {
+    const response = await this._getProxy(
+      "/cards",
+      "POST",
+      { "Content-Type": "application/json" },
+      JSON.stringify({ name, link })
+    );
 
-  // }
+    const data = await response.json();
+
+    console.log(data);
+  }
 }
