@@ -68,4 +68,20 @@ export default class Api {
 
     console.log(data);
   }
+
+  addCardLike(id) {
+    this._editCardLike(id, "PUT");
+  }
+
+  deleteCardLike(id) {
+    this._editCardLike(id, "DELETE");
+  }
+
+  async _editCardLike(id, action) {
+    const response = await this._getProxy(`/cards/likes/${id}`, action);
+
+    const data = await response.json();
+
+    console.log(data);
+  }
 }
