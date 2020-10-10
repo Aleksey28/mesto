@@ -60,4 +60,12 @@ export default class Api {
 
     console.log(data);
   }
+
+  async deleteCard(id) {
+    const response = await this._getProxy(`/cards/${id}`, "DELETE");
+
+    const data = await response.json();
+
+    console.log(data);
+  }
 }
