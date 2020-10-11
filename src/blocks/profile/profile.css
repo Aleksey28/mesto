@@ -5,6 +5,8 @@
 @import url(./__btn/profile__btn.css);
 @import url(./__btn/_action/profile__btn_action_edit.css);
 @import url(./__btn/_action/profile__btn_action_add.css);
+@import url(./__btn/_action/profile__btn_action_edit-avatar.css);
+@import url(./__avatar-overlay/profile__avatar-overlay.css);
 
 
 .profile {

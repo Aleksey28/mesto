@@ -12,6 +12,11 @@
 }
 
 
+.profile__btn_action_edit:hover {
+  opacity: .6;
+}
+
+
 @media screen and (max-width: 600px) {
   .profile__btn_action_edit {
     flex: 0 1 18px;
