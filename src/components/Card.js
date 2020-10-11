@@ -21,18 +21,15 @@ export default class Card {
   }
 
   _handleLikeCard() {
-    this._elementLike.classList.toggle("card__btn_active_like");
+    this._elementLike.classList.toggle("like__btn_active");
   }
 
   _setEventListeners() {
     const cardElementBtnTrush = this._element.querySelector(
       ".card__btn_action_trush"
     );
-    const cardElementBtnLike = this._element.querySelector(
-      ".card__btn_action_like"
-    );
 
-    cardElementBtnLike.addEventListener("click", () => this._handleLikeCard());
+    this._elementLike.addEventListener("click", () => this._handleLikeCard());
     cardElementBtnTrush.addEventListener("click", () =>
       this._handleDeleteCard()
     );
@@ -47,7 +44,7 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._elementLike = this._element.querySelector(".card__btn_action_like");
+    this._elementLike = this._element.querySelector(".like__btn");
     this._cardElementImage = this._element.querySelector(".card__image");
 
     //В отличии от других элементов карточки, этот записываю в константу и просто помещаю текст,
