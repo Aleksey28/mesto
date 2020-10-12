@@ -6,6 +6,7 @@ import {
   selectorPopupWithImage,
   selectorPopupWithAddForm,
   selectorPopupWithEditForm,
+  selectorPopupWithEditAvatarForm,
   selectorPopupWithConfirm,
   selectorsUserInfo,
   editButton,
@@ -13,7 +14,10 @@ import {
   validationSettings,
   inputSelectorsAddForm,
   inputSelectorsEditForm,
+  inputSelectorsEditAvatarForm,
   apiSettings,
+  profileAvatar,
+  editAvatarButton,
 } from "../utils/constants.js";
 
 import Section from "../components/Section.js";
@@ -53,6 +57,11 @@ const popupEditValidator = new FormValidator(
   selectorPopupWithEditForm
 );
 
+const popupEditAvatarValidator = new FormValidator(
+  validationSettings,
+  selectorPopupWithEditAvatarForm
+);
+
 const popupAdd = new PopupWithForm(
   selectorPopupWithAddForm,
   inputSelectorsAddForm,
@@ -77,6 +86,20 @@ const popupEdit = new PopupWithForm(
   }
 );
 
+const popupEditAvatar = new PopupWithForm(
+  selectorPopupWithEditAvatarForm,
+  inputSelectorsEditAvatarForm,
+  {
+    handlerSubmit: (data) => {
+      debugger;
+      profileAvatar.src = data.link;
+    },
+    handlerOpen: popupEditAvatarValidator.resetValidationForForm.bind(
+      popupEditAvatarValidator
+    ),
+  }
+);
+
 const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
   handlerSubmit: () => {
     console.log("Popup Submit was submited");
@@ -93,12 +116,18 @@ popupShow.setEventListeners();
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
 popupConfirm.setEventListeners();
+popupEditAvatar.setEventListeners();
 
 popupAddValidator.enableValidation();
 popupEditValidator.enableValidation();
+popupEditAvatarValidator.enableValidation();
 
 editButton.addEventListener("click", () => {
   popupEdit.open(userInfo.getUserInfo());
+});
+
+editAvatarButton.addEventListener("click", () => {
+  popupEditAvatar.open({ link: "" });
 });
 
 addButton.addEventListener("click", () => {

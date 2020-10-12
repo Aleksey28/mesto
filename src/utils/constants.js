@@ -42,6 +42,7 @@ export const cardListSelector = ".cards";
 export const selectorPopupWithImage = ".popup_type_show";
 export const selectorPopupWithAddForm = ".popup_type_add";
 export const selectorPopupWithEditForm = ".popup_type_edit";
+export const selectorPopupWithEditAvatarForm = ".popup_type_edit-avatar";
 export const selectorPopupWithConfirm = ".popup_type_confirm";
 
 export const inputSelectorsAddForm = {
@@ -54,6 +55,10 @@ export const inputSelectorsEditForm = {
   profession: ".popup__input_type_profession",
 };
 
+export const inputSelectorsEditAvatarForm = {
+  link: ".popup__input_type_link",
+};
+
 export const selectorsUserInfo = {
   selectorName: ".profile__name",
   selectorProfession: ".profile__profession",
@@ -62,6 +67,10 @@ export const selectorsUserInfo = {
 export const content = document.querySelector(".content");
 export const editButton = content.querySelector(".profile__btn_action_edit");
 export const addButton = content.querySelector(".profile__btn_action_add");
+export const editAvatarButton = content.querySelector(
+  ".profile__btn_action_edit-avatar"
+);
+export const profileAvatar = content.querySelector(".profile__avatar");
 
 export const validationSettings = {
   inputSelector: ".popup__input",
