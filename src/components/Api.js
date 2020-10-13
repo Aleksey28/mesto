@@ -36,12 +36,10 @@ export default class Api {
       { "Content-Type": "application/json" },
       JSON.stringify({ name, about })
     );
-    const data = await response.json();
-
-    console.log(data);
+    return await response.json();
   }
 
-  async setAvatar(link) {
+  async setAvatar({ link }) {
     const response = await this._getProxy(
       "/users/me/avatar",
       "PATCH",

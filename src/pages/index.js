@@ -83,8 +83,15 @@ const popupEdit = new PopupWithForm(
   inputSelectorsEditForm,
   {
     handlerSubmit: (data) => {
-      userInfo.setUserInfo(data);
-      popupEdit.close();
+      apiClass
+        .setUserData(data)
+        .then((data) => {
+          userInfo.setUserInfo(data);
+        })
+        .catch(console.log)
+        .finally(() => {
+          popupEdit.close();
+        });
     },
     handlerOpen: popupEditValidator.resetValidationForForm.bind(
       popupEditValidator
@@ -96,12 +103,11 @@ const popupEditAvatar = new PopupWithForm(
   selectorPopupWithEditAvatarForm,
   inputSelectorsEditAvatarForm,
   {
-    handlerSubmit: ({ link }) => {
+    handlerSubmit: (data) => {
       apiClass
-        .setAvatar(link)
+        .setAvatar(data)
         .then((data) => {
           userInfo.setUserInfo(data);
-          console.log(data);
         })
         .catch(console.log)
         .finally(() => {
