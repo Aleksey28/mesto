@@ -43,13 +43,12 @@ const addCard = (item) => {
   cardList.addItem(cardElement);
 };
 
-// const cardList = new Section(
-//   {
-//     items: initialCards,
-//     renderer: addCard,
-//   },
-//   cardListSelector
-// );
+const cardList = new Section(
+  {
+    renderer: addCard,
+  },
+  cardListSelector
+);
 
 const popupShow = new PopupWithImage(selectorPopupWithImage);
 
@@ -129,7 +128,6 @@ const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
   },
 });
 
-// cardList.rendererItems();
 popupShow.setEventListeners();
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
@@ -157,25 +155,5 @@ addButton.addEventListener("click", () => {
 
 Promise.all([apiClass.getUserData(), apiClass.getCardList()]).then((data) => {
   userInfo.setUserInfo(data[0]);
-  // const addCard = (item) => {
-  //   const cardElement = new Card("#card-template", {
-  //     data: item,
-  //     handleCardClick: (item) => {
-  //       popupShow.open(item);
-  //     },
-  //     handleLikeCard: (item) => {},
-  //     handleDeleteIconClick: (item) => {},
-  //   }).generateCard();
-  //   cardList.addItem(cardElement);
-  // };
-
-  const cardList = new Section(
-    {
-      items: data[1],
-      renderer: addCard,
-    },
-    cardListSelector
-  );
-
-  cardList.rendererItems();
+  cardList.render(data[1]);
 });
