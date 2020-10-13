@@ -5,6 +5,7 @@ export default class Card {
   ) {
     this._name = data.name;
     this._link = data.link;
+    this._likes = data.likes;
     this._description = data.description;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
@@ -51,6 +52,7 @@ export default class Card {
     this._element = this._getTemplate();
     this._elementLike = this._element.querySelector(".like__btn");
     this._cardElementImage = this._element.querySelector(".card__image");
+    this._elementLikeCount = this._element.querySelector(".like__count");
 
     //В отличии от других элементов карточки, этот записываю в константу и просто помещаю текст,
     //т.к. Caption используется только в одном месте при создании и не имеет смысл создавать локальные переменные для данного объекта Card
@@ -59,6 +61,7 @@ export default class Card {
     this._cardElementImage.src = this._link;
     this._cardElementImage.alt = this._description;
     cardElementCaption.textContent = this._name;
+    this._elementLikeCount.textContent = this._likes.length;
 
     this._setEventListeners();
 
