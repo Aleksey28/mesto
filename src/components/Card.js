@@ -23,12 +23,15 @@ export default class Card {
   }
 
   _handleLikeCard() {
+    this._btnLike.classList.toggle('like__btn_active');
     this._handlerLikeCard({ id: this._id, like: this._btnLike.classList.contains('like__btn_active') })
       .then((result) => {
-        this._btnLike.classList.toggle('like__btn_active');
         this._countLike.textContent = result.likes.length;
       })
-      .catch(console.log);
+      .catch((error) => {
+        console.log(error);
+        this._btnLike.classList.toggle('like__btn_active');
+      });
   }
 
   _isOwn() {
