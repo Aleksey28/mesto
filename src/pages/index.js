@@ -35,17 +35,19 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
     const addCard = (item) => {
       const cardElement = new Card('#card-template', {
         data: item,
-        handleCardClick: (item) => {
+        userId: data[0]._id,
+        handlerCardClick: (item) => {
           popupShow.open(item);
         },
-        handleLikeCard: (item) => {},
-        handleDeleteIconClick: (item) => {},
+        handlerLikeCard: (item) => {},
+        handlerDeleteIconClick: (item) => {},
       }).generateCard();
       return cardElement;
     };
 
     const userInfo = new UserInfo(selectorsUserInfo);
-    console.log(Array.isArray(data[1]));
+    console.log(data[0]);
+    console.log(data[1]);
     const cardList = new Section(
       {
         items: data[1].sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)),

@@ -3,6 +3,7 @@
 @import url(./__caption/card__caption.css);
 @import url(./__btn/card__btn.css);
 @import url(./__btn/_action/card__btn_action_trush.css);
+@import url(./__btn/_visible/card__btn_visible.css);
 @import url(./__like/card__like.css);
 
 .card {
@@ -11,5 +12,5 @@
   flex-direction: column;
 
   border-radius: 10px;
-  background: #FFFFFF;
+  background: #ffffff;
 }

@@ -1,13 +1,14 @@
 export default class Card {
-  constructor(cardSelector, { data, handleCardClick, handleLikeCard, handleDeleteIconClick }) {
+  constructor(cardSelector, { data, userId, handlerCardClick, handlerLikeCard, handlerDeleteIconClick }) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
-    this._description = data.description;
+    this._ownerId = data.owner._id;
+    this._userId = userId;
     this._cardSelector = cardSelector;
-    this._handleCardClick = handleCardClick;
-    this._handleLikeCard = handleLikeCard;
-    this._handleDeleteIconClick = handleDeleteIconClick;
+    this._handlerCardClick = handlerCardClick;
+    this._handlerLikeCard = handlerLikeCard;
+    this._handlerDeleteIconClick = handlerDeleteIconClick;
   }
 
   _getTemplate() {
@@ -21,37 +22,46 @@ export default class Card {
   }
 
   _handleLikeCard() {
-    this._elementLike.classList.toggle('like__btn_active');
+    this._btnLike.classList.toggle('like__btn_active');
+  }
+
+  _isOwn() {
+    return this._ownerId === this._userId;
   }
 
   _setEventListeners() {
-    const cardElementBtnTrush = this._element.querySelector('.card__btn_action_trush');
-
-    this._elementLike.addEventListener('click', () => this._handleLikeCard());
-    cardElementBtnTrush.addEventListener('click', () => this._handleDeleteCard());
+    this._btnLike.addEventListener('click', () => this._handleLikeCard());
+    if (!this._isOwn()) {
+      this._btnTrush.addEventListener('click', () => this._handleDeleteCard());
+    }
     this._cardElementImage.addEventListener('click', () =>
       this._handleCardClick({
         link: this._link,
         name: this._name,
-        description: this._description,
+        description: this._name,
       }),
     );
   }
 
   generateCard() {
     this._element = this._getTemplate();
-    this._elementLike = this._element.querySelector('.like__btn');
+    this._btnLike = this._element.querySelector('.like__btn');
+    this._btnTrush = this._element.querySelector('.card__btn_action_trush');
     this._cardElementImage = this._element.querySelector('.card__image');
-    this._elementLikeCount = this._element.querySelector('.like__count');
+    this._countLike = this._element.querySelector('.like__count');
+
+    if (!this._isOwn()) {
+      this._btnTrush.classList.add('card__btn_visible');
+    }
 
     //В отличии от других элементов карточки, этот записываю в константу и просто помещаю текст,
     //т.к. Caption используется только в одном месте при создании и не имеет смысл создавать локальные переменные для данного объекта Card
     const cardElementCaption = this._element.querySelector('.card__caption');
 
     this._cardElementImage.src = this._link;
-    this._cardElementImage.alt = this._description;
+    this._cardElementImage.alt = this._name;
     cardElementCaption.textContent = this._name;
-    this._elementLikeCount.textContent = this._likes.length;
+    this._countLike.textContent = this._likes.length;
 
     this._setEventListeners();
 
