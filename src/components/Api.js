@@ -48,9 +48,8 @@ export default class Api {
       { "Content-Type": "application/json" },
       JSON.stringify({ avatar: link })
     );
-    const data = await response.json();
 
-    console.log(data);
+    return await response.json();
   }
 
   async getCardList() {

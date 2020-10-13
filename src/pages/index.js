@@ -30,6 +30,7 @@ import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
 
 const userInfo = new UserInfo(selectorsUserInfo);
+const apiClass = new Api(apiSettings);
 
 const addCard = (item) => {
   const cardElement = new Card(item, "#card-template", (item) => {
@@ -90,9 +91,16 @@ const popupEditAvatar = new PopupWithForm(
   selectorPopupWithEditAvatarForm,
   inputSelectorsEditAvatarForm,
   {
-    handlerSubmit: (data) => {
-      debugger;
-      profileAvatar.src = data.link;
+    handlerSubmit: ({ link }) => {
+      apiClass
+        .setAvatar(link)
+        .then((data) => {
+          profileAvatar.src = data.avatar;
+        })
+        .catch(console.log)
+        .finally(() => {
+          popupEditAvatar.close();
+        });
     },
     handlerOpen: popupEditAvatarValidator.resetValidationForForm.bind(
       popupEditAvatarValidator
@@ -108,8 +116,6 @@ const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
     console.log("Popup Submit was opened");
   },
 });
-
-const apiClass = new Api(apiSettings);
 
 cardList.rendererItems();
 popupShow.setEventListeners();
