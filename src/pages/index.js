@@ -31,6 +31,13 @@ import Api from "../components/Api.js";
 const userInfo = new UserInfo(selectorsUserInfo);
 const apiClass = new Api(apiSettings);
 
+apiClass
+  .getUserData()
+  .then((data) => {
+    userInfo.setUserInfo(data);
+  })
+  .catch(console.log);
+
 const addCard = (item) => {
   const cardElement = new Card("#card-template", {
     data: item,
