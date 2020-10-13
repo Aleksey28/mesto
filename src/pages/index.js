@@ -1,7 +1,6 @@
 import "./index.css";
 
 import {
-  initialCards,
   cardListSelector,
   selectorPopupWithImage,
   selectorPopupWithAddForm,
@@ -50,8 +49,6 @@ const cardList = new Section(
   cardListSelector
 );
 
-const popupShow = new PopupWithImage(selectorPopupWithImage);
-
 const popupAddValidator = new FormValidator(
   validationSettings,
   selectorPopupWithAddForm
@@ -65,6 +62,8 @@ const popupEditAvatarValidator = new FormValidator(
   validationSettings,
   selectorPopupWithEditAvatarForm
 );
+
+const popupShow = new PopupWithImage(selectorPopupWithImage);
 
 const popupAdd = new PopupWithForm(
   selectorPopupWithAddForm,
