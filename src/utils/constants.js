@@ -52,7 +52,7 @@ export const inputSelectorsAddForm = {
 
 export const inputSelectorsEditForm = {
   name: ".popup__input_type_name",
-  profession: ".popup__input_type_profession",
+  about: ".popup__input_type_about",
 };
 
 export const inputSelectorsEditAvatarForm = {
@@ -61,7 +61,8 @@ export const inputSelectorsEditAvatarForm = {
 
 export const selectorsUserInfo = {
   selectorName: ".profile__name",
-  selectorProfession: ".profile__profession",
+  selectorAbout: ".profile__about",
+  selectorAvatar: ".profile__avatar",
 };
 
 export const content = document.querySelector(".content");
@@ -70,7 +71,6 @@ export const addButton = content.querySelector(".profile__btn_action_add");
 export const editAvatarButton = content.querySelector(
   ".profile__btn_action_edit-avatar"
 );
-export const profileAvatar = content.querySelector(".profile__avatar");
 
 export const validationSettings = {
   inputSelector: ".popup__input",

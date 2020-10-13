@@ -16,7 +16,6 @@ import {
   inputSelectorsEditForm,
   inputSelectorsEditAvatarForm,
   apiSettings,
-  profileAvatar,
   editAvatarButton,
 } from "../utils/constants.js";
 
@@ -85,6 +84,7 @@ const popupEdit = new PopupWithForm(
   {
     handlerSubmit: (data) => {
       userInfo.setUserInfo(data);
+      popupEdit.close();
     },
     handlerOpen: popupEditValidator.resetValidationForForm.bind(
       popupEditValidator
@@ -100,7 +100,8 @@ const popupEditAvatar = new PopupWithForm(
       apiClass
         .setAvatar(link)
         .then((data) => {
-          profileAvatar.src = data.avatar;
+          userInfo.setUserInfo(data);
+          console.log(data);
         })
         .catch(console.log)
         .finally(() => {
