@@ -45,15 +45,15 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
     };
 
     const userInfo = new UserInfo(selectorsUserInfo);
+    console.log(Array.isArray(data[1]));
     const cardList = new Section(
       {
-        items: data[1],
+        items: data[1].sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)),
         renderer: addCard,
       },
       cardListSelector,
     );
 
-    const popupShow = new PopupWithImage(selectorPopupWithImage);
     const popupAddValidator = new FormValidator(validationSettings, selectorPopupWithAddForm);
     const popupEditValidator = new FormValidator(validationSettings, selectorPopupWithEditForm);
     const popupEditAvatarValidator = new FormValidator(validationSettings, selectorPopupWithEditAvatarForm);
@@ -87,9 +87,18 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
       handlerOpen: popupEditAvatarValidator.resetValidationForForm.bind(popupEditAvatarValidator),
     });
     const popupAdd = new PopupWithForm(selectorPopupWithAddForm, inputSelectorsAddForm, {
-      handlerSubmit: addCard,
+      handlerSubmit: (data) => {
+        apiClass
+          .addCard(data)
+          .then((data) => {
+            cardList.addItem(addCard(data));
+          })
+          .catch(console.log)
+          .finally(() => popupAdd.close());
+      },
       handlerOpen: popupAddValidator.resetValidationForForm.bind(popupAddValidator),
     });
+    const popupShow = new PopupWithImage(selectorPopupWithImage);
     const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
       handlerSubmit: () => {
         console.log('Popup Submit was submited');
