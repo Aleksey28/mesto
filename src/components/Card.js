@@ -1,14 +1,16 @@
 export default class Card {
-  constructor(cardSelector, { data, userId, handlerCardClick, handlerLikeCard, handlerDeleteIconClick }) {
+  constructor(cardSelector, { data, userId, handlerCardClick, handlerLikeCard, handlerDeleteCard }) {
+    debugger;
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
+    this._id = data._id;
     this._ownerId = data.owner._id;
     this._userId = userId;
     this._cardSelector = cardSelector;
     this._handlerCardClick = handlerCardClick;
     this._handlerLikeCard = handlerLikeCard;
-    this._handlerDeleteIconClick = handlerDeleteIconClick;
+    this._handlerDeleteCard = handlerDeleteCard;
   }
 
   _getTemplate() {
@@ -23,6 +25,11 @@ export default class Card {
 
   _handleLikeCard() {
     this._btnLike.classList.toggle('like__btn_active');
+    this._handlerLikeCard({ id: this._id, like: this._btnLike.classList.contains('like__btn_active') })
+      .then((result) => {
+        this._countLike.textContent = result.likes.length;
+      })
+      .catch(console.log);
   }
 
   _isOwn() {
@@ -31,11 +38,11 @@ export default class Card {
 
   _setEventListeners() {
     this._btnLike.addEventListener('click', () => this._handleLikeCard());
-    if (!this._isOwn()) {
+    if (this._isOwn()) {
       this._btnTrush.addEventListener('click', () => this._handleDeleteCard());
     }
     this._cardElementImage.addEventListener('click', () =>
-      this._handleCardClick({
+      this._handlerCardClick({
         link: this._link,
         name: this._name,
         description: this._name,

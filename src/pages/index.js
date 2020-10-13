@@ -32,6 +32,7 @@ const apiClass = new Api(apiSettings);
 
 Promise.all([apiClass.getUserData(), apiClass.getCardList()])
   .then((data) => {
+    const popupShow = new PopupWithImage(selectorPopupWithImage);
     const addCard = (item) => {
       const cardElement = new Card('#card-template', {
         data: item,
@@ -39,8 +40,8 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
         handlerCardClick: (item) => {
           popupShow.open(item);
         },
-        handlerLikeCard: (item) => {},
-        handlerDeleteIconClick: (item) => {},
+        handlerLikeCard: (data) => apiClass.toggleCardLike(data),
+        handlerDeleteCard: (item) => {},
       }).generateCard();
       return cardElement;
     };
@@ -100,7 +101,6 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
       },
       handlerOpen: popupAddValidator.resetValidationForForm.bind(popupAddValidator),
     });
-    const popupShow = new PopupWithImage(selectorPopupWithImage);
     const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
       handlerSubmit: () => {
         console.log('Popup Submit was submited');

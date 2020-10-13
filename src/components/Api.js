@@ -57,16 +57,8 @@ export default class Api {
     return await this._handleResponse(response);
   }
 
-  addCardLike(id) {
-    this._editCardLike(id, 'PUT');
-  }
-
-  deleteCardLike(id) {
-    this._editCardLike(id, 'DELETE');
-  }
-
-  async _editCardLike(id, action) {
-    const response = await this._getProxy(`/cards/likes/${id}`, action);
+  async toggleCardLike({ id, like }) {
+    const response = await this._getProxy(`/cards/likes/${id}`, like ? 'PUT' : 'DELETE');
     return await this._handleResponse(response);
   }
 }
