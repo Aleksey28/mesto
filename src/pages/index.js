@@ -1,6 +1,7 @@
 import "./index.css";
 
 import {
+  initialCards,
   cardListSelector,
   selectorPopupWithImage,
   selectorPopupWithAddForm,
@@ -27,8 +28,9 @@ import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
 
-const userInfo = new UserInfo(selectorsUserInfo);
 const apiClass = new Api(apiSettings);
+
+const popupShow = new PopupWithImage(selectorPopupWithImage);
 
 const addCard = (item) => {
   const cardElement = new Card("#card-template", {
@@ -39,15 +41,38 @@ const addCard = (item) => {
     handleLikeCard: (item) => {},
     handleDeleteIconClick: (item) => {},
   }).generateCard();
-  cardList.addItem(cardElement);
+  return cardElement;
 };
 
-const cardList = new Section(
-  {
-    renderer: addCard,
-  },
-  cardListSelector
-);
+Promise.all([apiClass.getUserData(), apiClass.getCardList()])
+  .then((data) => {
+    const userInfo = new UserInfo(selectorsUserInfo);
+    const cardList = new Section(
+      {
+        items: data[1],
+        renderer: addCard,
+      },
+      cardListSelector
+    );
+
+    return {
+      data,
+      cardList,
+      userInfo,
+    };
+  })
+  .then(({ data, cardList, userInfo }) => {
+    userInfo.setUserInfo(data[0]);
+    cardList.render();
+  });
+
+// const cardList = new Section(
+//   {
+//     items: initialCards,
+//     renderer: addCard,
+//   },
+//   cardListSelector
+// );
 
 const popupAddValidator = new FormValidator(
   validationSettings,
@@ -62,8 +87,6 @@ const popupEditAvatarValidator = new FormValidator(
   validationSettings,
   selectorPopupWithEditAvatarForm
 );
-
-const popupShow = new PopupWithImage(selectorPopupWithImage);
 
 const popupAdd = new PopupWithForm(
   selectorPopupWithAddForm,
@@ -127,6 +150,7 @@ const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
   },
 });
 
+// cardList.render();
 popupShow.setEventListeners();
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
@@ -150,9 +174,4 @@ addButton.addEventListener("click", () => {
     name: "",
     link: "",
   });
-});
-
-Promise.all([apiClass.getUserData(), apiClass.getCardList()]).then((data) => {
-  userInfo.setUserInfo(data[0]);
-  cardList.render(data[1]);
 });
