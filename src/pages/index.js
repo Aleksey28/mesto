@@ -64,15 +64,14 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
   .then(({ data, cardList, userInfo }) => {
     userInfo.setUserInfo(data[0]);
     cardList.render();
+  })
+  .catch((error) => {
+    console.log(error);
+    document.body.innerHTML = "";
+    const elementError = document.createElement("p");
+    elementError.textContent = error;
+    document.body.append(elementError);
   });
-
-// const cardList = new Section(
-//   {
-//     items: initialCards,
-//     renderer: addCard,
-//   },
-//   cardListSelector
-// );
 
 const popupAddValidator = new FormValidator(
   validationSettings,
@@ -150,7 +149,6 @@ const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
   },
 });
 
-// cardList.render();
 popupShow.setEventListeners();
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
