@@ -1,6 +1,5 @@
 export default class Card {
   constructor(cardSelector, { data, userId, handlerCardClick, handlerLikeCard, handlerDeleteCard }) {
-    debugger;
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
@@ -59,6 +58,10 @@ export default class Card {
 
     if (!this._isOwn()) {
       this._btnTrush.classList.add('card__btn_visible');
+    }
+
+    if (this._likes.some((item) => item._id === this._userId)) {
+      this._btnLike.classList.toggle('like__btn_active');
     }
 
     //В отличии от других элементов карточки, этот записываю в константу и просто помещаю текст,
