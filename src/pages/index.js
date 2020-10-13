@@ -66,10 +66,10 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
     cardList.render();
   })
   .catch((error) => {
-    console.log(error);
     document.body.innerHTML = "";
     const elementError = document.createElement("p");
     elementError.textContent = error;
+    elementError.classList.add("error");
     document.body.append(elementError);
   });
 
