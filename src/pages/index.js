@@ -47,8 +47,6 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
     };
 
     const userInfo = new UserInfo(selectorsUserInfo);
-    console.log(data[0]);
-    console.log(data[1]);
     const cardList = new Section(
       {
         items: data[1].sort((a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)),
