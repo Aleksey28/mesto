@@ -33,8 +33,13 @@ const userInfo = new UserInfo(selectorsUserInfo);
 const apiClass = new Api(apiSettings);
 
 const addCard = (item) => {
-  const cardElement = new Card(item, "#card-template", (item) => {
-    popupShow.open(item);
+  const cardElement = new Card("#card-template", {
+    data: item,
+    handleCardClick: (item) => {
+      popupShow.open(item);
+    },
+    handleLikeCard: (item) => {},
+    handleDeleteIconClick: (item) => {},
   }).generateCard();
   cardList.addItem(cardElement);
 };
