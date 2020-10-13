@@ -6,7 +6,7 @@ export default class Section {
   }
 
   _clear() {
-    this._container.innerHTML = "";
+    this._container.innerHTML = '';
   }
 
   addItem(element) {

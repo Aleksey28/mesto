@@ -1,4 +1,4 @@
-import { data } from "autoprefixer";
+import { data } from 'autoprefixer';
 
 export default class Api {
   constructor({ baseUrl, headers }) {
@@ -6,7 +6,7 @@ export default class Api {
     this._headers = headers;
   }
 
-  _getProxy(relativePath, method, body = "") {
+  _getProxy(relativePath, method, body = '') {
     const options = {
       method,
       headers: this._headers,
@@ -28,53 +28,41 @@ export default class Api {
   }
 
   async getUserData() {
-    const response = await this._getProxy("/users/me", "GET");
+    const response = await this._getProxy('/users/me', 'GET');
     return await this._handleResponse(response);
   }
 
   async setUserData({ name, about }) {
-    const response = await this._getProxy(
-      "/users/me",
-      "PATCH",
-      JSON.stringify({ name, about })
-    );
+    const response = await this._getProxy('/users/me', 'PATCH', JSON.stringify({ name, about }));
     return await this._handleResponse(response);
   }
 
   async setAvatar({ link }) {
-    const response = await this._getProxy(
-      "/users/me/avatar",
-      "PATCH",
-      JSON.stringify({ avatar: link })
-    );
+    const response = await this._getProxy('/users/me/avatar', 'PATCH', JSON.stringify({ avatar: link }));
     return await this._handleResponse(response);
   }
 
   async getCardList() {
-    const response = await this._getProxy("/cards", "GET");
+    const response = await this._getProxy('/cards', 'GET');
     return await this._handleResponse(response);
   }
 
   async addCard({ name, link }) {
-    const response = await this._getProxy(
-      "/cards",
-      "POST",
-      JSON.stringify({ name, link })
-    );
+    const response = await this._getProxy('/cards', 'POST', JSON.stringify({ name, link }));
     return await this._handleResponse(response);
   }
 
   async deleteCard(id) {
-    const response = await this._getProxy(`/cards/${id}`, "DELETE");
+    const response = await this._getProxy(`/cards/${id}`, 'DELETE');
     return await this._handleResponse(response);
   }
 
   addCardLike(id) {
-    this._editCardLike(id, "PUT");
+    this._editCardLike(id, 'PUT');
   }
 
   deleteCardLike(id) {
-    this._editCardLike(id, "DELETE");
+    this._editCardLike(id, 'DELETE');
   }
 
   async _editCardLike(id, action) {

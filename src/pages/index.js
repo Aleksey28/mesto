@@ -54,10 +54,8 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
     );
 
     const popupShow = new PopupWithImage(selectorPopupWithImage);
-
     const popupAddValidator = new FormValidator(validationSettings, selectorPopupWithAddForm);
     const popupEditValidator = new FormValidator(validationSettings, selectorPopupWithEditForm);
-
     const popupEditAvatarValidator = new FormValidator(validationSettings, selectorPopupWithEditAvatarForm);
 
     const popupEdit = new PopupWithForm(selectorPopupWithEditForm, inputSelectorsEditForm, {
@@ -74,7 +72,6 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
       },
       handlerOpen: popupEditValidator.resetValidationForForm.bind(popupEditValidator),
     });
-
     const popupEditAvatar = new PopupWithForm(selectorPopupWithEditAvatarForm, inputSelectorsEditAvatarForm, {
       handlerSubmit: (data) => {
         apiClass
@@ -89,12 +86,10 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
       },
       handlerOpen: popupEditAvatarValidator.resetValidationForForm.bind(popupEditAvatarValidator),
     });
-
     const popupAdd = new PopupWithForm(selectorPopupWithAddForm, inputSelectorsAddForm, {
       handlerSubmit: addCard,
       handlerOpen: popupAddValidator.resetValidationForForm.bind(popupAddValidator),
     });
-
     const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
       handlerSubmit: () => {
         console.log('Popup Submit was submited');
