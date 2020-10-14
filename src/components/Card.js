@@ -29,7 +29,7 @@ export default class Card {
         this._countLike.title = result.likes.reduce((res, item) => (res += `${item.name}\n`), '');
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
         this._btnLike.classList.toggle('like__btn_active');
       });
   }
