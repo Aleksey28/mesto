@@ -42,13 +42,18 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
         handlerLikeCard: (data) => apiClass.toggleCardLike(data),
         handlerDeleteCard: (item, id) => {
           popupConfirm.setHandlerSubmit(() => {
+            popupConfirm.toggleLoading();
             apiClass
               .deleteCard(id)
               .then(() => {
                 item.remove();
                 item = null;
               })
-              .catch(console.log);
+              .catch(console.log)
+              .finally(() => {
+                popupConfirm.close();
+                popupConfirm.toggleLoading();
+              });
           });
           popupConfirm.open();
         },
@@ -72,6 +77,7 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
     const popupShow = new PopupWithImage(selectorPopupWithImage);
     const popupEdit = new PopupWithForm(selectorPopupWithEditForm, inputSelectorsEditForm, {
       handlerSubmit: (data) => {
+        popupEdit.toggleLoading();
         apiClass
           .setUserData(data)
           .then((data) => {
@@ -80,12 +86,14 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
           .catch(console.log)
           .finally(() => {
             popupEdit.close();
+            popupEdit.toggleLoading();
           });
       },
       handlerOpen: popupEditValidator.resetValidationForForm.bind(popupEditValidator),
     });
     const popupEditAvatar = new PopupWithForm(selectorPopupWithEditAvatarForm, inputSelectorsEditAvatarForm, {
       handlerSubmit: (data) => {
+        popupEditAvatar.toggleLoading();
         apiClass
           .setAvatar(data)
           .then((data) => {
@@ -94,19 +102,24 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
           .catch(console.log)
           .finally(() => {
             popupEditAvatar.close();
+            popupEditAvatar.toggleLoading();
           });
       },
       handlerOpen: popupEditAvatarValidator.resetValidationForForm.bind(popupEditAvatarValidator),
     });
     const popupAdd = new PopupWithForm(selectorPopupWithAddForm, inputSelectorsAddForm, {
       handlerSubmit: (data) => {
+        popupAdd.toggleLoading();
         apiClass
           .addCard(data)
           .then((data) => {
             cardList.addItem(addCard(data));
           })
           .catch(console.log)
-          .finally(() => popupAdd.close());
+          .finally(() => {
+            popupAdd.close();
+            popupAdd.toggleLoading();
+          });
       },
       handlerOpen: popupAddValidator.resetValidationForForm.bind(popupAddValidator),
     });
@@ -175,3 +188,11 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
     elementError.classList.add('error');
     document.body.append(elementError);
   });
+
+// for (let i = 0; i < 30; i++) {
+//   setTimeout(() => {
+//     apiClass
+//       .addCard({ name: 'Press F server', link: 'https://media.giphy.com/media/w7mLEAMcpjrpe/giphy.gif' })
+//       .then((result) => apiClass.toggleCardLike({ id: result._id, like: true }));
+//   }, i * 600);
+// }

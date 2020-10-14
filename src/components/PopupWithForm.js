@@ -6,7 +6,8 @@ export default class PopupWithForm extends Popup {
     this._handlerSubmit = handlerSubmit;
     this._handlerOpen = handlerOpen;
     this._popupBtnSubmit = this._popupElement.querySelector('.popup__btn_action_submit');
-    this._popupBtnSubmitText = this._popupBtnSubmit.textContent;
+    this._popupBtnLabelStatic = this._popupElement.querySelector('.popup__btn-label_type_static');
+    this._popupBtnLabelDoing = this._popupElement.querySelector('.popup__btn-label_type_doing');
 
     //В случае если будут добавляться инпуты, не нужно будет модифицировать класс
     this._inputSelectors = inputSelectors;
@@ -33,8 +34,12 @@ export default class PopupWithForm extends Popup {
 
   _handleSubmitPopup(evt) {
     evt.preventDefault();
-    this._popupBtnSubmit.textContent = 'Сохранение...';
     this._handlerSubmit(this._getInputValues());
+  }
+
+  toggleLoading() {
+    this._popupBtnLabelStatic.classList.toggle('popup__btn-label_visible');
+    this._popupBtnLabelDoing.classList.toggle('popup__btn-label_visible');
   }
 
   setEventListeners() {
@@ -50,7 +55,6 @@ export default class PopupWithForm extends Popup {
 
   close() {
     super.close();
-    this._popupBtnSubmit.textContent = this._popupBtnSubmitText;
     this._popupForm.reset();
   }
 }
