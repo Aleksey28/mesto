@@ -26,6 +26,7 @@ export default class Card {
     this._handlerLikeCard({ id: this._id, like: this._btnLike.classList.contains('like__btn_active') })
       .then((result) => {
         this._countLike.textContent = result.likes.length;
+        this._countLike.title = result.likes.reduce((res, item) => (res += `${item.name}\n`), '');
       })
       .catch((error) => {
         console.log(error);
@@ -74,6 +75,7 @@ export default class Card {
     this._cardElementImage.alt = this._name;
     cardElementCaption.textContent = this._name;
     this._countLike.textContent = this._likes.length;
+    this._countLike.title = this._likes.reduce((res, item) => (res += `${item.name}\n`), '');
 
     this._setEventListeners();
 

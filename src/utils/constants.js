@@ -1,5 +1,5 @@
 export const cardListSelector = '.cards';
-export const selectorPopupWithImage = '.popup_type_show';
+export const selectorPicturePopup = '.popup_type_show';
 export const selectorPopupWithAddForm = '.popup_type_add';
 export const selectorPopupWithEditForm = '.popup_type_edit';
 export const selectorPopupWithEditAvatarForm = '.popup_type_edit-avatar';

@@ -3,7 +3,7 @@ import './index.css';
 import {
   initialCards,
   cardListSelector,
-  selectorPopupWithImage,
+  selectorPicturePopup,
   selectorPopupWithAddForm,
   selectorPopupWithEditForm,
   selectorPopupWithEditAvatarForm,
@@ -21,7 +21,7 @@ import {
 
 import Section from '../components/Section.js';
 import Card from '../components/Card.js';
-import PopupWithImage from '../components/PopupWithImage.js';
+import PicturePopup from '../components/PicturePopup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import UserInfo from '../components/UserInfo.js';
@@ -74,7 +74,7 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
     const popupEditValidator = new FormValidator(validationSettings, selectorPopupWithEditForm);
     const popupEditAvatarValidator = new FormValidator(validationSettings, selectorPopupWithEditAvatarForm);
 
-    const popupShow = new PopupWithImage(selectorPopupWithImage);
+    const popupShow = new PicturePopup(selectorPicturePopup);
     const popupEdit = new PopupWithForm(selectorPopupWithEditForm, inputSelectorsEditForm, {
       handlerSubmit: (data) => {
         popupEdit.toggleLoading();
