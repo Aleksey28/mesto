@@ -8,3 +8,11 @@
 
   object-fit: fill;
 }
+
+@media screen and (max-width: 600px) {
+  .popup__dialog {
+    left: calc((100vw - 320px) / (600 - 320) * (140 - 120) + 120px);
+
+    width: calc((100vw - 320px) / (600 - 320) * (190 - 103) + 103px);
+  }
+}
