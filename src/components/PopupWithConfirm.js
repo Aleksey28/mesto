@@ -14,8 +14,8 @@ export default class PopupWithConfirm extends Popup {
   }
 
   toggleLoading() {
-    this._popupBtnLabelStatic = this._popupBtnLabelStatic.classList.toggle('popup__btn-label_visible');
-    this._popupBtnLabelDoing = this._popupBtnLabelDoing.classList.toggle('popup__btn-label_visible');
+    this._popupBtnLabelStatic.classList.toggle('popup__btn-label_visible');
+    this._popupBtnLabelDoing.classList.toggle('popup__btn-label_visible');
   }
 
   setHandlerSubmit(handlerSubmit) {

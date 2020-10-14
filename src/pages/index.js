@@ -49,7 +49,7 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
                 item.remove();
                 item = null;
               })
-              .catch(console.log)
+              .catch(alert)
               .finally(() => {
                 popupConfirm.close();
                 popupConfirm.toggleLoading();
@@ -83,7 +83,7 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
           .then((data) => {
             userInfo.setUserInfo(data);
           })
-          .catch(console.log)
+          .catch(alert)
           .finally(() => {
             popupEdit.close();
             popupEdit.toggleLoading();
@@ -99,7 +99,7 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
           .then((data) => {
             userInfo.setUserInfo(data);
           })
-          .catch(console.log)
+          .catch(alert)
           .finally(() => {
             popupEditAvatar.close();
             popupEditAvatar.toggleLoading();
@@ -115,7 +115,7 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
           .then((data) => {
             cardList.addItem(addCard(data));
           })
-          .catch(console.log)
+          .catch(alert)
           .finally(() => {
             popupAdd.close();
             popupAdd.toggleLoading();

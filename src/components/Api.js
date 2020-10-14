@@ -20,10 +20,12 @@ export default class Api {
   }
 
   async _handleResponse(response) {
+    const description = await response.json();
+
     if (response.ok) {
-      return await response.json();
+      return description;
     } else {
-      return Promise.reject(`Ошибка: ${response.status}`);
+      return Promise.reject(`Ошибка: ${response.status}\nОписание: ${description.message}`);
     }
   }
 
