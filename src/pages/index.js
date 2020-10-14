@@ -32,7 +32,6 @@ const apiClass = new Api(apiSettings);
 
 Promise.all([apiClass.getUserData(), apiClass.getCardList()])
   .then((data) => {
-    const popupShow = new PopupWithImage(selectorPopupWithImage);
     const addCard = (item) => {
       const cardElement = new Card('#card-template', {
         data: item,
@@ -41,7 +40,18 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
           popupShow.open(item);
         },
         handlerLikeCard: (data) => apiClass.toggleCardLike(data),
-        handlerDeleteCard: (item) => {},
+        handlerDeleteCard: (item, id) => {
+          popupConfirm.setHandlerSubmit(() => {
+            apiClass
+              .deleteCard(id)
+              .then(() => {
+                item.remove();
+                item = null;
+              })
+              .catch(console.log);
+          });
+          popupConfirm.open();
+        },
       }).generateCard();
       return cardElement;
     };
@@ -59,6 +69,7 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
     const popupEditValidator = new FormValidator(validationSettings, selectorPopupWithEditForm);
     const popupEditAvatarValidator = new FormValidator(validationSettings, selectorPopupWithEditAvatarForm);
 
+    const popupShow = new PopupWithImage(selectorPopupWithImage);
     const popupEdit = new PopupWithForm(selectorPopupWithEditForm, inputSelectorsEditForm, {
       handlerSubmit: (data) => {
         apiClass
@@ -99,14 +110,7 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
       },
       handlerOpen: popupAddValidator.resetValidationForForm.bind(popupAddValidator),
     });
-    const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm, {
-      handlerSubmit: () => {
-        console.log('Popup Submit was submited');
-      },
-      handlerOpen: () => {
-        console.log('Popup Submit was opened');
-      },
-    });
+    const popupConfirm = new PopupWithConfirm(selectorPopupWithConfirm);
 
     return {
       data,

@@ -18,8 +18,7 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._element.remove();
-    this._element = null;
+    this._handlerDeleteCard(this._element, this._id);
   }
 
   _handleLikeCard() {
