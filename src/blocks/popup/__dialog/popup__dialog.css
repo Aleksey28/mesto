@@ -11,8 +11,16 @@
 
 @media screen and (max-width: 600px) {
   .popup__dialog {
-    left: calc((100vw - 320px) / (600 - 320) * (140 - 120) + 120px);
+    left: calc((100vw - 320px) / (600 - 320) * (140 - 125) + 125px);
 
-    width: calc((100vw - 320px) / (600 - 320) * (190 - 103) + 103px);
+    width: calc((100vw - 320px) / (600 - 320) * (190 - 96) + 96px);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .popup__dialog {
+    left: 125px;
+
+    width: 96px;
   }
 }
