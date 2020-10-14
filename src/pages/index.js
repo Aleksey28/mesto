@@ -188,11 +188,3 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
     elementError.classList.add('error');
     document.body.append(elementError);
   });
-
-// for (let i = 0; i < 30; i++) {
-//   setTimeout(() => {
-//     apiClass
-//       .addCard({ name: 'Press F server', link: 'https://media.giphy.com/media/w7mLEAMcpjrpe/giphy.gif' })
-//       .then((result) => apiClass.toggleCardLike({ id: result._id, like: true }));
-//   }, i * 600);
-// }
