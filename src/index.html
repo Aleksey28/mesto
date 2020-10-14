@@ -17,12 +17,12 @@
       <section class="profile">
         <button class="profile__btn profile__btn_action_edit-avatar">
           <img src="#" alt="Аватар." class="profile__avatar" />
-          <div class="profile__avatar-overlay"></div>
+          <span class="profile__avatar-overlay"></span>
         </button>
         <div class="profile__info">
-          <h1 class="profile__name"></h1>
+          <h1 class="profile__name">Name</h1>
           <button class="profile__btn profile__btn_action_edit" type="button"></button>
-          <p class="profile__about"></p>
+          <p class="profile__about">About</p>
         </div>
         <button class="profile__btn profile__btn_action_add" type="button"></button>
       </section>
@@ -42,14 +42,14 @@
           type="url"
           class="popup__input popup__input_type_link"
           name="link"
-          id="link-input"
+          id="link-input-edit"
           placeholder="Ссылка на картинку"
           required
         />
-        <span class="popup__error" id="link-input-error"></span>
+        <span class="popup__error" id="link-input-edit-error"></span>
         <button class="popup__btn popup__btn_action_submit" type="submit">
-          <p class="popup__btn-label popup__btn-label_type_static popup__btn-label_visible">Сохранить</p>
-          <p class="popup__btn-label popup__btn-label_type_doing">Сохранение...</p>
+          <span class="popup__btn-label popup__btn-label_type_static popup__btn-label_visible">Сохранить</span>
+          <span class="popup__btn-label popup__btn-label_type_doing">Сохранение...</span>
         </button>
       </form>
     </div>
@@ -81,8 +81,8 @@
         />
         <span class="popup__error" id="about-input-error"></span>
         <button class="popup__btn popup__btn_action_submit" type="submit">
-          <p class="popup__btn-label popup__btn-label_type_static popup__btn-label_visible">Сохранить</p>
-          <p class="popup__btn-label popup__btn-label_type_doing">Сохранение...</p>
+          <span class="popup__btn-label popup__btn-label_type_static popup__btn-label_visible">Сохранить</span>
+          <span class="popup__btn-label popup__btn-label_type_doing">Сохранение...</span>
         </button>
       </form>
     </div>
@@ -106,14 +106,14 @@
           type="url"
           class="popup__input popup__input_type_link"
           name="link"
-          id="link-input"
+          id="link-input-add"
           placeholder="Ссылка на картинку"
           required
         />
-        <span class="popup__error" id="link-input-error"></span>
+        <span class="popup__error" id="link-input-add-error"></span>
         <button class="popup__btn popup__btn_action_submit" type="submit">
-          <p class="popup__btn-label popup__btn-label_type_static popup__btn-label_visible">Создать</p>
-          <p class="popup__btn-label popup__btn-label_type_doing">Создание...</p>
+          <span class="popup__btn-label popup__btn-label_type_static popup__btn-label_visible">Создать</span>
+          <span class="popup__btn-label popup__btn-label_type_doing">Создание...</span>
         </button>
       </form>
     </div>
@@ -127,8 +127,8 @@
           <img src="./images/img-confirm.svg" alt="Поле диалога." class="popup__dialog" />
         </div>
         <button class="popup__btn popup__btn_action_submit" type="submit">
-          <p class="popup__btn-label popup__btn-label_type_static popup__btn-label_visible">Да</p>
-          <p class="popup__btn-label popup__btn-label_type_doing">Удаление...</p>
+          <span class="popup__btn-label popup__btn-label_type_static popup__btn-label_visible">Да</span>
+          <span class="popup__btn-label popup__btn-label_type_doing">Удаление...</span>
         </button>
       </form>
     </div>
