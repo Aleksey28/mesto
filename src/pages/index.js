@@ -155,6 +155,7 @@ Promise.all([apiClass.getUserData(), apiClass.getCardList()])
     }) => {
       userInfo.setUserInfo(data[0]);
       cardList.render();
+      popupConfirm.setUserInfo(data[0]);
 
       popupShow.setEventListeners();
       popupAdd.setEventListeners();

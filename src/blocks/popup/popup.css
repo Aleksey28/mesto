@@ -16,6 +16,9 @@
 @import url(./__caption/popup__caption.css);
 @import url(./__btn-label/popup__btn-label.css);
 @import url(./__btn-label/_visible/popup__btn-label_visible.css);
+@import url(./__avatar/popup__avatar.css);
+@import url(./__group-title/popup__group-title.css);
+@import url(./__dialog/popup__dialog.css);
 
 .popup {
   position: fixed;

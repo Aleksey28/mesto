@@ -5,6 +5,7 @@ export default class PopupWithConfirm extends Popup {
     super(selector);
     this._popupBtnLabelStatic = this._popupElement.querySelector('.popup__btn-label_type_static');
     this._popupBtnLabelDoing = this._popupElement.querySelector('.popup__btn-label_type_doing');
+    this._popupAvatar = this._popupElement.querySelector('.popup__avatar');
   }
 
   _handleSubmitPopup(evt) {
@@ -19,6 +20,10 @@ export default class PopupWithConfirm extends Popup {
 
   setHandlerSubmit(handlerSubmit) {
     this._handlerSubmit = handlerSubmit;
+  }
+
+  setUserInfo({ avatar }) {
+    this._popupAvatar.src = avatar;
   }
 
   setEventListeners() {
